@@ -14,7 +14,7 @@ export function axiosLogInterceptor(axios: AxiosInstance) {
     };
     return data;
   }
-
+  //  Comment test
   function transformResponse(response: AxiosResponse) {
     const startTime = (response.config as any).__startTime;
     const endTime = new Date().getTime();
