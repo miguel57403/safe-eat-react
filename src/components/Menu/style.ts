@@ -2,19 +2,21 @@ import { styled } from "styled-components";
 
 export const StyleMenu = styled.div`
   width: 15%;
+  max-width: 15%;
+  min-width: 15%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border-right: 1px solid #cececa;
+  border-right: 1px solid #722ed1;
   padding: 10px;
-  background-color: white;
-  gap: 10px;
+  background-color: #722ed1;
+  gap: 24px;
   border-radius: 8px;
 
   .logo-menu {
     display: flex;
     border-radius: 8px;
-    background-color: darkgray;
+    background-color: #722ed1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,11 +37,13 @@ export const StyleMenu = styled.div`
 
   .section-menu {
     flex-grow: 1;
+    background-color: #722ed1;
+    color: white;
   }
 
   .footer-menu {
     height: 80px;
-    background-color: darkgray;
+    background-color: #22075e;
     border-radius: 8px;
     gap: 10px;
     display: flex;

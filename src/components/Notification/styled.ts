@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 
 export const StyledNotification = styled.div`
   width: 13%;
+  min-width: 13%;
+  min-width: 13%;
   height: 100%;
 
   .title-notification {

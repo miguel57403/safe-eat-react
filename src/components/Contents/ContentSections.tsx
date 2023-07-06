@@ -18,14 +18,14 @@ const optionsMore = (
   </div>
 );
 
-export const ContentProducts = () => {
+export const ContentSections = () => {
   const [selectType, setSelectType] = useState<"checkbox" | "radio">(
     "checkbox"
   );
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
-        Products
+        Sections
       </FontsDefault.H2>
       <div className="search-content">
         <Search placeholder="input search loading default" />
@@ -48,7 +48,7 @@ export const ContentProducts = () => {
         </div>
 
         <FontsDefault.P1 color="dark" fontsSize={15}>
-          {DataMockedProducts.length} produtos
+          {DataMockedProducts.length} sections
         </FontsDefault.P1>
       </div>
 
