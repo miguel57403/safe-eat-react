@@ -25,7 +25,7 @@ export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
       />
       <div className="footer-menu">
         <Avatar size={40} icon={<AntDesignOutlined />} />
-        <FontsDefault.P1 color="white" fontsSize={19}>
+        <FontsDefault.P1 color="white" fontsSize={16}>
           Galinha da vizinha
         </FontsDefault.P1>
       </div>

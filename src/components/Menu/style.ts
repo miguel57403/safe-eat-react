@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 
 export const StyleMenu = styled.div`
   width: 15%;
-  max-width: 15%;
-  min-width: 15%;
+  min-width: 250px;
+  max-width: 300px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

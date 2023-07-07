@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 
 export const StyledNotification = styled.div`
   width: 13%;
-  min-width: 13%;
-  min-width: 13%;
+  min-width: 250px;
+  max-width: 300px;
   height: calc(100vh - 20px);
   overflow-y: auto;
   padding-right: 8px;
