@@ -8,15 +8,15 @@ import { MenuProps } from "antd";
 import { getItem } from "utils/getItemMenu";
 
 export const itemMocked: MenuProps["items"] = [
-  getItem("Dashboard", "", <MailOutlined />),
+  getItem("Dashboard", "/dashboard", <MailOutlined />),
   { type: "divider" },
-  getItem("Orders", "orders", <ReceiptIcon />),
+  getItem("Orders", "/orders", <ReceiptIcon />),
   { type: "divider" },
-  getItem("Products", "products", <InventoryIcon />),
+  getItem("Products", "/products", <InventoryIcon />),
   { type: "divider" },
-  getItem("Ingredients", "ingredients", <ScienceIcon />),
+  getItem("Ingredients", "/ingredients", <ScienceIcon />),
   { type: "divider" },
-  getItem("Deliveries", "deliveries", <DeliveryIcon />),
+  getItem("Deliveries", "/deliveries", <DeliveryIcon />),
   { type: "divider" },
-  getItem("Sections", "sections", <GridViewIcon />),
+  getItem("Sections", "/sections", <GridViewIcon />),
 ];

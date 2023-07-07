@@ -4,17 +4,11 @@ import { itemMocked } from "assets/data/dataMenuMocket";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyleMenu } from "components/Menu/style";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
   const navigate = useNavigate();
-  const [key, setKey] = useState("");
-
-  const handleNavigate = (onClick: any) => {
-    navigate(`/${onClick.key}`);
-    setKey(onClick.key);
-  };
+  const location = useLocation();
 
   return (
     <StyleMenu {...props}>
@@ -23,9 +17,9 @@ export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
         <p>Restaurants</p>
       </FontsDefault.H2>
       <Menu
-        onClick={handleNavigate}
+        onClick={(e) => navigate(`${e.key}`)}
         className="section-menu"
-        defaultOpenKeys={[key]}
+        selectedKeys={[location.pathname]}
         mode="vertical"
         items={itemMocked}
       />
