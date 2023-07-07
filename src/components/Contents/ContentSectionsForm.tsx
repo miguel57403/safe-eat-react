@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
-import { Button, Form, Input, Select, Space } from "antd";
-import { FontsDefault } from "assets/fonts/Fonts";
-import { StyledContentP } from "./styled";
 import { useParams } from "react-router-dom";
+import { StyledContentP } from "./styled";
+import { FontsDefault } from "assets/fonts/Fonts";
+import { useEffect, useState } from "react";
+import { Button, Form, Input, Select, Space } from "antd";
 
-export function ContentIngredientsForm() {
+export const ContentSectionsForm = () => {
   const params = useParams();
   const isUpdating = !!params.id;
-  // TODO: Use the id to get the name
-  const name = "Ingredient one";
+  // TODO: Use the id to get the name of the section
+  const name = "Section one";
 
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
-        {isUpdating ? "Ingredients: " + name : "Ingredients: new"}
+        {isUpdating ? "Sections: " + name : "Sections: new"}
       </FontsDefault.H2>
       <div
         style={{
@@ -25,7 +25,7 @@ export function ContentIngredientsForm() {
           alignItems: "center",
         }}
       >
-        <IngredientsForm
+        <SectionsForm
           isUpdating={isUpdating}
           onSubmit={(values) => {
             console.log(values);
@@ -34,33 +34,33 @@ export function ContentIngredientsForm() {
       </div>
     </StyledContentP>
   );
-}
-
-type IngredientsFormProps = {
-  isUpdating: boolean;
-  onSubmit: (values: IngredientsFormValues) => void;
 };
 
-function IngredientsForm({ isUpdating, onSubmit }: IngredientsFormProps) {
-  const [restrictions, setRestrictions] = useState<Option[]>([]);
+type SectionsFormProps = {
+  isUpdating: boolean;
+  onSubmit: (values: SectionsFormValues) => void;
+};
 
-  useEffect(() => {
-    async function loadRestrictions() {
-      // TODO: fetch restrictions from the API
-      const restrictionsFake: Option[] = Array.from({ length: 10 }, (_, i) => ({
-        id: i.toString(),
-        name: `Restriction ${i}`,
-      }));
+export const SectionsForm = ({ onSubmit, isUpdating }: SectionsFormProps) => {
+  const [products, setProducts] = useState<Option[]>([]);
 
-      setRestrictions(restrictionsFake);
-    }
-
-    loadRestrictions();
-  }, []);
-
-  const onFinish = (values: IngredientsFormValues) => {
+  const onFinish = (values: SectionsFormValues) => {
     onSubmit(values);
   };
+
+  useEffect(() => {
+    async function loadProducts() {
+      // TODO: fetch from the API
+      const productsFake: Option[] = Array.from({ length: 10 }, (_, i) => ({
+        id: i.toString(),
+        name: `Product ${i}`,
+      }));
+
+      setProducts(productsFake);
+    }
+
+    loadProducts();
+  }, []);
 
   return (
     <Form
@@ -88,25 +88,17 @@ function IngredientsForm({ isUpdating, onSubmit }: IngredientsFormProps) {
       </Form.Item>
 
       <Form.Item
-        label="Description"
-        name="description"
-        rules={[{ required: true, message: "Description is required" }]}
-      >
-        <Input.TextArea rows={3} />
-      </Form.Item>
-
-      <Form.Item
-        label="Restrictions"
-        name="restrictionIds"
-        rules={[{ required: true, message: "Restrictions is required" }]}
+        label="Products"
+        name="productIds"
+        rules={[{ required: true, message: "Products is required" }]}
       >
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          placeholder="select the restrictions"
+          placeholder="select the products"
           optionLabelProp="label"
         >
-          {restrictions.map((it) => (
+          {products.map((it) => (
             <Select.Option value={it.id} label={it.name}>
               <Space>{it.name}</Space>
             </Select.Option>
@@ -121,15 +113,14 @@ function IngredientsForm({ isUpdating, onSubmit }: IngredientsFormProps) {
       </Form.Item>
     </Form>
   );
-}
+};
+
+type SectionsFormValues = {
+  name: string;
+  productIds: string[];
+};
 
 type Option = {
   id: string;
   name: string;
-};
-
-type IngredientsFormValues = {
-  name: string;
-  description: string;
-  restrictionIds: string[];
 };

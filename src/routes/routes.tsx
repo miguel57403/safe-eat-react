@@ -8,6 +8,7 @@ import { OrdersPage } from "pages/Orders";
 import { ProductsPage } from "pages/Products";
 import { ProductsFormPage } from "pages/ProductsForm";
 import { SectionsPage } from "pages/Sections";
+import { SectionsFormPage } from "pages/SectionsForm";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -26,6 +27,8 @@ export const RoutesApp: React.FC = () => {
       <Route path="/ingredients/:id" element={<IngredientsFormPage />} />
       <Route path="/deliveries" element={<DeliveriesPage />} />
       <Route path="/sections" element={<SectionsPage />} />
+      <Route path="/sections/new" element={<SectionsFormPage />} />
+      <Route path="/sections/:id" element={<SectionsFormPage />} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

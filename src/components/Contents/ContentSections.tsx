@@ -8,7 +8,7 @@ import {
 } from "assets/data/dataMocketTable";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledContentP } from "components/Contents/styled";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const optionsMore = (
   <div style={{ gap: 10, display: "flex", flexDirection: "column" }}>
@@ -19,9 +19,8 @@ const optionsMore = (
 );
 
 export const ContentSections = () => {
-  const [selectType, setSelectType] = useState<"checkbox" | "radio">(
-    "checkbox"
-  );
+  const navigate = useNavigate();
+  // TODO: Change table to grid of cards with 4 images of products
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
@@ -29,7 +28,12 @@ export const ContentSections = () => {
       </FontsDefault.H2>
       <div className="search-content">
         <Search placeholder="input search loading default" />
-        <Button type="primary" icon={<PlusOutlined />} size="large">
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          size="large"
+          onClick={() => navigate("/sections/new")}
+        >
           New
         </Button>
       </div>
@@ -56,7 +60,7 @@ export const ContentSections = () => {
         className="table-content"
         columns={ColumnsMockedProducts}
         rowSelection={{
-          type: selectType,
+          type: "checkbox",
           ...rowSelection,
         }}
         dataSource={DataMockedProducts}
