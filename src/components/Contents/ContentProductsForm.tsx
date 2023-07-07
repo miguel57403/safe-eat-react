@@ -190,7 +190,7 @@ function ProductsForm({ isUpdating, onSubmit }: ProductsFormProps) {
           onPreview={handlePreview}
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
         >
-          {fileList.length >= 8 ? null : (
+          {fileList.length != 0 ? null : (
             <div>
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
