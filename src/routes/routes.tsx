@@ -6,6 +6,7 @@ import { ProductsPage } from "pages/Products";
 import { SectionsPage } from "pages/Sections";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { IngredientsFormPage } from "pages/IngredientsForm";
 
 export const RoutesApp: React.FC = () => {
   return (
@@ -14,6 +15,8 @@ export const RoutesApp: React.FC = () => {
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/ingredients" element={<IngredientsPage />} />
+      <Route path="/ingredients/new" element={<IngredientsFormPage />} />
+      <Route path="/ingredients/:id" element={<IngredientsFormPage />} />
       <Route path="/deliveries" element={<DeliveriesPage />} />
       <Route path="/sections" element={<SectionsPage />} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
