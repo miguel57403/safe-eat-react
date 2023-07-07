@@ -7,12 +7,14 @@ import { ProductsPage } from "pages/Products";
 import { SectionsPage } from "pages/Sections";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { SignUpPage } from "pages/Auth/SignUp";
 
 export const RoutesApp: React.FC = () => {
   return (
     <Routes>
       <Route path="/dashboard" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/ingredients" element={<IngredientsPage />} />

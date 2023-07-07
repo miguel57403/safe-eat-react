@@ -82,7 +82,7 @@ export const StyledContentH = styled.div`
 `;
 
 export const StyleContentL = styled.div<IStyledProps>`
-  width: 40%;
+  width: 30%;
   background-color: white;
   padding: 10px;
   border-radius: 8px;
@@ -90,7 +90,7 @@ export const StyleContentL = styled.div<IStyledProps>`
   height: max-content;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 
   * {
     transition: ease-in-out 0.3s all;
@@ -100,11 +100,17 @@ export const StyleContentL = styled.div<IStyledProps>`
     display: flex;
     border-radius: 8px;
     background-color: #722ed1;
-    flex-direction: row;
+    flex-direction: column;
+    padding: 70px;
     justify-content: center;
+    gap: 0px;
     align-items: center;
     height: 100px;
     width: 100%;
+  }
+
+  .logo-content > i {
+    font-size: 25px;
   }
 
   .form-content {
