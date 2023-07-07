@@ -1,3 +1,4 @@
+import { IStyledProps } from "interfaces/IGlobalAttribute";
 import { styled } from "styled-components";
 
 export const StyledContentRestaurant = styled.div`
@@ -77,5 +78,37 @@ export const StyledContentH = styled.div`
     width: 90%;
     margin: auto;
     flex-grow: 1;
+  }
+`;
+
+export const StyleContentL = styled.div<IStyledProps>`
+  width: 40%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 1px white;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  * {
+    transition: ease-in-out 0.3s all;
+  }
+
+  .logo-content {
+    display: flex;
+    border-radius: 8px;
+    background-color: #722ed1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+  }
+
+  .form-content {
+    width: 100%;
+    margin: 0 auto;
   }
 `;
