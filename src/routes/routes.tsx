@@ -3,6 +3,7 @@ import { HomePage } from "pages/Home";
 import { IngredientsPage } from "pages/Ingredients";
 import { OrdersPage } from "pages/Orders";
 import { ProductsPage } from "pages/Products";
+import { ProductsFormPage } from "pages/ProductsForm";
 import { SectionsPage } from "pages/Sections";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -14,6 +15,8 @@ export const RoutesApp: React.FC = () => {
       <Route path="/dashboard" element={<HomePage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/products/new" element={<ProductsFormPage />} />
+      <Route path="/products/:id" element={<ProductsFormPage />} />
       <Route path="/ingredients" element={<IngredientsPage />} />
       <Route path="/ingredients/new" element={<IngredientsFormPage />} />
       <Route path="/ingredients/:id" element={<IngredientsFormPage />} />
