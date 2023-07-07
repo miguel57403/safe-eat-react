@@ -1,7 +1,7 @@
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Avatar, Card, Col } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledNotification } from "components/Notification/styled";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 
 interface INotification {
   time: string;
@@ -13,6 +13,60 @@ interface INotification {
 }
 
 const itemsNotification: INotification[] = [
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
+  {
+    time: "2022-03-03",
+    description: "This is the notification",
+    user: {
+      name: "John Smith",
+      picture:
+        "https://images02.military.com/sites/default/files/2021-04/chucknorris.jpeg",
+    },
+  },
   {
     time: "2022-03-03",
     description: "This is the notification",
@@ -83,8 +137,8 @@ export const Notifications = () => {
         Notifications
       </FontsDefault.H1>
       <div className="card-notification">
-        {itemsNotification.map((notification) => (
-          <Col>
+        {itemsNotification.map((notification, index) => (
+          <Col key={index}>
             <Card
               hoverable
               title={

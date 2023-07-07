@@ -1,18 +1,22 @@
+import { LoginPage } from "pages/Auth/Login";
+import { SignUpPage } from "pages/Auth/SignUp";
 import { DeliveriesPage } from "pages/Deliveries";
 import { HomePage } from "pages/Home";
 import { IngredientsPage } from "pages/Ingredients";
+import { IngredientsFormPage } from "pages/IngredientsForm";
 import { OrdersPage } from "pages/Orders";
 import { ProductsPage } from "pages/Products";
 import { ProductsFormPage } from "pages/ProductsForm";
 import { SectionsPage } from "pages/Sections";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { IngredientsFormPage } from "pages/IngredientsForm";
 
 export const RoutesApp: React.FC = () => {
   return (
     <Routes>
       <Route path="/dashboard" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/new" element={<ProductsFormPage />} />
