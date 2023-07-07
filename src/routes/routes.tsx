@@ -1,3 +1,4 @@
+import { LoginPage } from "pages/Auth/Login";
 import { DeliveriesPage } from "pages/Deliveries";
 import { HomePage } from "pages/Home";
 import { IngredientsPage } from "pages/Ingredients";
@@ -10,6 +11,7 @@ export const RoutesApp: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/ingredients" element={<IngredientsPage />} />
