@@ -17,6 +17,5 @@ export const StyledLogin = styled.div`
 
   .footer-content > p > .link-form {
     color: white;
-    text-decoration: none;
   }
 `;

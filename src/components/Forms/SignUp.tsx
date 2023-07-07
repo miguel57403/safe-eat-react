@@ -60,7 +60,7 @@ export const FormSignUp: React.FC<IGlobalAttribute> = ({ ...props }) => {
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Sign Up
           </Button>
         </Form.Item>
       </Form>

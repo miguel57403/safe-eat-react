@@ -5,6 +5,7 @@ import { FontsDefault } from "assets/fonts/Fonts";
 import { StyleMenu } from "components/Menu/style";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "assets/images/logo-restaurants.svg";
 
 export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
   const navigate = useNavigate();
@@ -12,10 +13,7 @@ export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
 
   return (
     <StyleMenu {...props}>
-      <FontsDefault.H2 fontsSize={25} className="logo-menu" color="white">
-        <p>SafeEat </p>
-        <p>Restaurants</p>
-      </FontsDefault.H2>
+      <img src={logo} style={{ padding: "12px 34px" }} />
       <Menu
         onClick={(e) => navigate(`${e.key}`)}
         className="section-menu"
