@@ -19,11 +19,13 @@ import { PlusOutlined } from "@ant-design/icons";
 export const ContentProductsForm = () => {
   const params = useParams();
   const isUpdating = !!params.id;
+  // TODO: Use the id to get the name
+  const name = "Product one";
 
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
-        {isUpdating ? "Products" : "Products: new"}
+        {isUpdating ? "Products: " + name : "Products: new"}
       </FontsDefault.H2>
       <div
         style={{

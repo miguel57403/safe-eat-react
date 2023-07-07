@@ -7,11 +7,13 @@ import { useParams } from "react-router-dom";
 export function ContentIngredientsForm() {
   const params = useParams();
   const isUpdating = !!params.id;
+  // TODO: Use the id to get the name
+  const name = "Ingredient one";
 
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
-        {isUpdating ? "Ingredients" : "Ingredients: new"}
+        {isUpdating ? "Ingredients: " + name : "Ingredients: new"}
       </FontsDefault.H2>
       <div
         style={{
