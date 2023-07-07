@@ -1,6 +1,7 @@
 import { Avatar, Card, Col } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledNotification } from "components/Notification/styled";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 interface INotification {
   time: string;
@@ -76,7 +77,9 @@ export const Notifications = () => {
         fontsWeight={400}
         fontsSize={18}
         color="white"
+        style={{ display: "flex", alignItems: "baseline", gap: "5px" }}
       >
+        <NotificationsIcon style={{ fontSize: "16px" }} />
         Notifications
       </FontsDefault.H1>
       <div className="card-notification">
