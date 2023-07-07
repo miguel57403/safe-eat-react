@@ -1,17 +1,17 @@
 import { Button, Form, Input } from "antd";
 import { StyledFormLogin } from "components/Forms/styled";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
-};
-
 export const FormLogin: React.FC<IGlobalAttribute> = ({ ...props }) => {
+  const navigate = useNavigate();
+
+  const onFinish = (values: FormLoginValues) => {
+    console.log(values);
+    navigate("/restaurant/select");
+  };
+
   return (
     <StyledFormLogin {...props}>
       <Form
@@ -20,7 +20,6 @@ export const FormLogin: React.FC<IGlobalAttribute> = ({ ...props }) => {
         className="form-login"
         initialValues={{ remember: false }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
@@ -47,4 +46,9 @@ export const FormLogin: React.FC<IGlobalAttribute> = ({ ...props }) => {
       </Form>
     </StyledFormLogin>
   );
+};
+
+type FormLoginValues = {
+  username: string;
+  password: string;
 };

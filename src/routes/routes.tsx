@@ -1,5 +1,6 @@
 import { LoginPage } from "pages/Auth/Login";
 import { SignUpPage } from "pages/Auth/SignUp";
+import { RestaurantSelectPage } from "pages/Auth/RestaurantSelect";
 import { DeliveriesPage } from "pages/Deliveries";
 import { HomePage } from "pages/Home";
 import { IngredientsPage } from "pages/Ingredients";
@@ -18,6 +19,7 @@ export const RoutesApp: React.FC = () => {
       <Route path="/dashboard" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/restaurant/select" element={<RestaurantSelectPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/new" element={<ProductsFormPage />} />
