@@ -4,6 +4,7 @@ import { IngredientsPage } from "pages/Ingredients";
 import { OrdersPage } from "pages/Orders";
 import { ProductsPage } from "pages/Products";
 import { SectionsPage } from "pages/Sections";
+import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const RoutesApp: React.FC = () => {
@@ -16,6 +17,7 @@ export const RoutesApp: React.FC = () => {
       <Route path="/deliveries" element={<DeliveriesPage />} />
       <Route path="/sections" element={<SectionsPage />} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
