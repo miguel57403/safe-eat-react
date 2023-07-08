@@ -1,13 +1,36 @@
 import { AntDesignOutlined } from "@ant-design/icons";
-import { Avatar, Button, Divider, Empty } from "antd";
+import { Avatar, Button, Card, Empty, Typography } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { useState, useEffect } from "react";
 
 export const ContentRestaurantSelect = () => {
   const navigate = useNavigate();
-  const data = Array.from({ length: 4 });
-  // const data = [] as any[];
+  const [restaurants, setRestaurants] = useState<RestaurantSelection[]>([]);
+
+  useEffect(() => {
+    async function loadRestaurants() {
+      try {
+        const length = 8;
+        const restaurantsMock: RestaurantSelection[] = Array.from({
+          length,
+        }).map((_, i) => ({
+          id: `${i}`,
+          name: `Restaurant ${i}`,
+          logo: `https://picsum.photos/300/200?random=${i}`,
+          cover: `https://picsum.photos/300/200?random=${i + length + 1}`,
+        }));
+
+        setRestaurants(restaurantsMock);
+      } catch (error) {
+        // TODO: handle error
+        console.error(error);
+      }
+    }
+
+    loadRestaurants();
+  }, []);
 
   return (
     <Container>
@@ -15,29 +38,43 @@ export const ContentRestaurantSelect = () => {
         Select a Restaurant
       </FontsDefault.H2>
       <div className="items">
-        {data.length === 0 ? (
+        {restaurants.length === 0 ? (
           <div className="empty">
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
           </div>
         ) : (
-          data.map((item, i) => (
-            <div
-              key={"items" + i}
-              className="item"
+          restaurants.map((item) => (
+            <Card
+              key={`restaurant-${item.id}`}
+              hoverable
+              title={
+                <div style={{ paddingBlock: "12px" }}>
+                  <Avatar
+                    shape="square"
+                    size={80}
+                    icon={
+                      !item.logo ? (
+                        <AntDesignOutlined />
+                      ) : (
+                        <img src={item.logo} alt="img" />
+                      )
+                    }
+                  />
+                </div>
+              }
+              headStyle={{ background: `url(${item.cover}) no-repeat` }}
+              style={{ width: 300 }}
               onClick={() => {
                 navigate("/dashboard");
-                console.log(item);
               }}
-            >
-              <Avatar size={40} icon={<AntDesignOutlined />} />
-              <FontsDefault.P1 color="black" fontsSize={16}>
-                Galinha da vizinha
-              </FontsDefault.P1>
-            </div>
+              children={
+                <Typography.Title level={4}>{item.name}</Typography.Title>
+              }
+            />
           ))
         )}
       </div>
-      <Button>+ Create a Restaurant</Button>
+      <Button size="large">+ Create a Restaurant</Button>
     </Container>
   );
 };
@@ -45,8 +82,7 @@ export const ContentRestaurantSelect = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 400px;
+  gap: 24px;
   padding: 12px;
   align-items: center;
 
@@ -58,21 +94,8 @@ const Container = styled.div`
     padding: 12px;
     border-radius: 8px;
     width: 100%;
-  }
-
-  & .item {
-    height: 80px;
-    background-color: #efdbff;
-    border-radius: 8px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-
-  & .item:hover {
-    background-color: #d3adf7;
-    cursor: pointer;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   & .empty {
@@ -83,3 +106,10 @@ const Container = styled.div`
     border-radius: 8px;
   }
 `;
+
+type RestaurantSelection = {
+  id: string;
+  name: string;
+  logo?: string;
+  cover: string;
+};
