@@ -2,9 +2,14 @@ import {
   AntDesignOutlined,
   LogoutOutlined,
   ShopOutlined,
+  MailOutlined,
 } from "@ant-design/icons";
+import DeliveryIcon from "@mui/icons-material/DeliveryDining";
+import GridViewIcon from "@mui/icons-material/GridView";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import ScienceIcon from "@mui/icons-material/Science";
 import { Avatar, Menu, MenuProps, Dropdown } from "antd";
-import { itemMocked } from "assets/data/dataMenuMocket";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyleMenu } from "components/Menu/style";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
@@ -43,7 +48,7 @@ export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
         className="section-menu"
         selectedKeys={[location.pathname]}
         mode="vertical"
-        items={itemMocked}
+        items={sidebarItems}
       />
       <div className="footer-menu">
         <Dropdown menu={{ items }} trigger={["click"]}>
@@ -61,3 +66,17 @@ export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
     </StyleMenu>
   );
 };
+
+export const sidebarItems: MenuProps["items"] = [
+  { label: "Dashboard", key: "/dashboard", icon: <MailOutlined /> },
+  { type: "divider" },
+  { label: "Orders", key: "/orders", icon: <ReceiptIcon /> },
+  { type: "divider" },
+  { label: "Products", key: "/products", icon: <InventoryIcon /> },
+  { type: "divider" },
+  { label: "Ingredients", key: "/ingredients", icon: <ScienceIcon /> },
+  { type: "divider" },
+  { label: "Deliveries", key: "/deliveries", icon: <DeliveryIcon /> },
+  { type: "divider" },
+  { label: "Sections", key: "/sections", icon: <GridViewIcon /> },
+];
