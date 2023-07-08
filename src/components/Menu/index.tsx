@@ -76,7 +76,5 @@ export const sidebarItems: MenuProps["items"] = [
   { type: "divider" },
   { label: "Ingredients", key: "/ingredients", icon: <ScienceIcon /> },
   { type: "divider" },
-  { label: "Deliveries", key: "/deliveries", icon: <DeliveryIcon /> },
-  { type: "divider" },
   { label: "Sections", key: "/sections", icon: <GridViewIcon /> },
 ];
