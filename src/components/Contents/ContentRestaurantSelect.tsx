@@ -74,7 +74,9 @@ export const ContentRestaurantSelect = () => {
           ))
         )}
       </div>
-      <Button size="large">+ Create a Restaurant</Button>
+      <Button size="large" onClick={() => navigate("/restaurant/new")}>
+        + Create a Restaurant
+      </Button>
     </Container>
   );
 };
