@@ -12,6 +12,8 @@ import { SectionsPage } from "pages/Sections";
 import { SectionsFormPage } from "pages/SectionsForm";
 import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ProfileFormPage } from "pages/ProfileForm";
+import { OrdersFormPage } from "pages/OrdersFormPage";
 
 export const RoutesApp: React.FC = () => {
   return (
@@ -22,6 +24,7 @@ export const RoutesApp: React.FC = () => {
       <Route path="/restaurant/select" element={<RestaurantSelectPage />} />
       <Route path="/restaurant/new" element={<RestaurantNewPage />} />
       <Route path="/orders" element={<OrdersPage />} />
+      <Route path="/orders/:id" element={<OrdersFormPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/new" element={<ProductsFormPage />} />
       <Route path="/products/:id" element={<ProductsFormPage />} />
@@ -31,6 +34,7 @@ export const RoutesApp: React.FC = () => {
       <Route path="/sections" element={<SectionsPage />} />
       <Route path="/sections/new" element={<SectionsFormPage />} />
       <Route path="/sections/:id" element={<SectionsFormPage />} />
+      <Route path="/profile" element={<ProfileFormPage />} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
