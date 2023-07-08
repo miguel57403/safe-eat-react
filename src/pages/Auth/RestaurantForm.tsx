@@ -8,9 +8,7 @@ export const RestaurantNewPage = () => {
       <FontsDefault.H2 fontsSize={32} color="white">
         New Restaurant
       </FontsDefault.H2>
-      <Form>
-        <FormRestaurant />
-      </Form>
+      <FormRestaurant />
     </Page>
   );
 };
@@ -35,16 +33,4 @@ export const Page = styled.div`
   & > img {
     width: 200px;
   }
-`;
-
-export const Form = styled.div`
-  max-width: 800px;
-  background-color: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 0 4px 1px white;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 `;

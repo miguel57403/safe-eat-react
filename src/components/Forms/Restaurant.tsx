@@ -1,7 +1,12 @@
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Form, Input, InputNumber, Space } from "antd";
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
+import { Button, Form, Input, InputNumber, Space, Upload } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { styled } from "styled-components";
 
 export const FormRestaurant = () => {
   const navigate = useNavigate();
@@ -17,106 +22,123 @@ export const FormRestaurant = () => {
   };
 
   return (
-    <Form
-      layout="vertical"
-      className="form-login"
-      initialValues={{ remember: false }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Name"
-        name="name"
-        rules={[{ required: true, message: "Please input your name!" }]}
+    <FormContainer>
+      <Form
+        layout="vertical"
+        className="form-login"
+        initialValues={{ remember: false }}
+        onFinish={onFinish}
+        autoComplete="off"
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[{ required: true, message: "Please input your name!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.List name="deliveries">
-        {(fields, { add, remove }) => (
-          <>
-            {fields.map(({ key, name, ...restField }, index) => (
-              <Form.Item
-                label={index === 0 ? "Deliveries" : ""}
-                required={false}
-                key={key}
-              >
-                <Space>
-                  <Form.Item
-                    {...restField}
-                    name={[name, "name"]}
-                    rules={[{ required: true, message: "Name is required" }]}
-                  >
-                    <Input placeholder="Name" />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, "price"]}
-                    rules={[{ required: true, message: "Price is required" }]}
-                  >
-                    <InputNumber
-                      prefix="€"
-                      placeholder="Price"
-                      style={{ width: "100%" }}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, "minimumTime"]}
-                    rules={[
-                      { required: true, message: "Minimum time is required" },
-                    ]}
-                  >
-                    <InputNumber
-                      placeholder="Minimum time"
-                      addonAfter="min"
-                      style={{ width: "100%" }}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, "maximumTime"]}
-                    rules={[
-                      { required: true, message: "Maximum time is required" },
-                    ]}
-                  >
-                    <InputNumber
-                      placeholder="Maximum time"
-                      addonAfter="min"
-                      style={{ width: "100%" }}
-                    />
-                  </Form.Item>
+        <Form.Item label="Logo" name="logo">
+          <Upload listType="picture" maxCount={1}>
+            <Button style={{ width: "100%" }} icon={<UploadOutlined />}>
+              Upload
+            </Button>
+          </Upload>
+        </Form.Item>
 
-                  <Form.Item>
-                    <MinusCircleOutlined onClick={() => remove(name)} />
-                  </Form.Item>
-                </Space>
+        <Form.Item label="Cover" name="cover">
+          <Upload listType="picture" maxCount={1}>
+            <Button style={{ width: "100%" }} icon={<UploadOutlined />}>
+              Upload
+            </Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.List name="deliveries">
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map(({ key, name, ...restField }, index) => (
+                <Form.Item
+                  label={index === 0 ? "Deliveries" : ""}
+                  required={false}
+                  key={key}
+                >
+                  <Space>
+                    <Form.Item
+                      {...restField}
+                      name={[name, "name"]}
+                      rules={[{ required: true, message: "Name is required" }]}
+                    >
+                      <Input placeholder="Name" />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, "price"]}
+                      rules={[{ required: true, message: "Price is required" }]}
+                    >
+                      <InputNumber
+                        prefix="€"
+                        placeholder="Price"
+                        style={{ width: "100%" }}
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, "minimumTime"]}
+                      rules={[
+                        { required: true, message: "Minimum time is required" },
+                      ]}
+                    >
+                      <InputNumber
+                        placeholder="Minimum time"
+                        addonAfter="min"
+                        style={{ width: "100%" }}
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, "maximumTime"]}
+                      rules={[
+                        { required: true, message: "Maximum time is required" },
+                      ]}
+                    >
+                      <InputNumber
+                        placeholder="Maximum time"
+                        addonAfter="min"
+                        style={{ width: "100%" }}
+                      />
+                    </Form.Item>
+
+                    <Form.Item>
+                      <MinusCircleOutlined onClick={() => remove(name)} />
+                    </Form.Item>
+                  </Space>
+                </Form.Item>
+              ))}
+              <Form.Item>
+                <Button block onClick={() => add()} icon={<PlusOutlined />}>
+                  Add delivery
+                </Button>
               </Form.Item>
-            ))}
-            <Form.Item>
-              <Button
-                type="dashed"
-                block
-                onClick={() => add()}
-                icon={<PlusOutlined />}
-              >
-                Add delivery
-              </Button>
-            </Form.Item>
-          </>
-        )}
-      </Form.List>
-      <Form.Item>
-        <Space>
-          <Button type="default" htmlType="submit" onClick={() => navigate(-1)}>
-            Cancel
-          </Button>
-          <Button type="primary" htmlType="submit" loading={isLoading}>
-            Create
-          </Button>
-        </Space>
-      </Form.Item>
-    </Form>
+            </>
+          )}
+        </Form.List>
+        <Form.Item>
+          <Space>
+            <Button
+              type="default"
+              htmlType="submit"
+              onClick={() => navigate(-1)}
+            >
+              Cancel
+            </Button>
+            <Button type="primary" htmlType="submit" loading={isLoading}>
+              Create
+            </Button>
+          </Space>
+        </Form.Item>
+      </Form>
+    </FormContainer>
   );
 };
 
@@ -129,3 +151,19 @@ type FormRestaurantData = {
     maximumTime: string;
   }[];
 };
+
+export const FormContainer = styled.div`
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 800px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 1px white;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;

@@ -1,17 +1,17 @@
+import React from "react";
 import { Button, Form, Input } from "antd";
 import { StyledFormLogin } from "components/Forms/styled";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
-import React from "react";
-
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
-};
+import { useNavigate } from "react-router-dom";
 
 export const FormSignUp: React.FC<IGlobalAttribute> = ({ ...props }) => {
+  const navigate = useNavigate();
+
+  const onFinish = (values: any) => {
+    console.log(values);
+    navigate("/login");
+  };
+
   return (
     <StyledFormLogin {...props}>
       <Form
@@ -20,7 +20,6 @@ export const FormSignUp: React.FC<IGlobalAttribute> = ({ ...props }) => {
         className="form-login"
         initialValues={{ remember: false }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
@@ -46,7 +45,7 @@ export const FormSignUp: React.FC<IGlobalAttribute> = ({ ...props }) => {
         <Form.Item
           label="Cellphone"
           name="cellphone"
-          rules={[{ type: "number", required: true, message: "Cellphone" }]}
+          rules={[{ required: true, message: "Cellphone is required" }]}
         >
           <Input />
         </Form.Item>
