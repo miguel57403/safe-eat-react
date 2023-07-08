@@ -94,10 +94,6 @@ export const Link = styled.a<IPropsFonts>`
 
   color: ${(props) => props.color || ColorGlobal.green700};
   transition: ease-in-out 0.5s all;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const FontsDefault = {

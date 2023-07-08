@@ -1,34 +1,29 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
+  width: 8px;
+  height: 10px;
 }
 
 *::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #cecece;
-    border-radius: 20px;
+  background: #cecece;
+  border-radius: 20px;
 }
 
-.double-data-input{
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-
+.double-data-input {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-    cursor:pointer;
-}
-
-button:hover {
-    transform: scale(1.04);
+  cursor: pointer;
 }
