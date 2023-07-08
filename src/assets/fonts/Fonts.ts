@@ -60,7 +60,7 @@ const H6 = styled.h3<IPropsFonts>`
   margin: 0;
   color: ${(props) => props.color || ColorGlobal.green700};
   font-weight: ${(props) => props.fontsWeight || 100};
-  font-size: ${(props) => props.fontsSize || 17}px;
+  font-size: ${(props) => props.fontsSize || 16}px;
   line-height: 1;
   text-indent: 0;
   display: flex;
@@ -94,10 +94,6 @@ export const Link = styled.a<IPropsFonts>`
 
   color: ${(props) => props.color || ColorGlobal.green700};
   transition: ease-in-out 0.5s all;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const FontsDefault = {

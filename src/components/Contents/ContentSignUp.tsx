@@ -1,15 +1,21 @@
-import { FontsDefault } from "assets/fonts/Fonts";
 import { StyleContentL } from "components/Contents/styled";
-import { FormLogin } from "components/Forms/Login";
-import { FormSignUp } from "components/Forms/SignUp";
+import { FormSignUp } from "components/Forms/FormSignUp";
+import logo from "assets/images/logo-restaurants.svg";
 
 export const ContentSignUp = () => {
   return (
     <StyleContentL>
-      <FontsDefault.H2 color="white" fontsSize={45} className="logo-content">
-        <p>SafeEat</p>
-        <i>RESTAURANTS</i>
-      </FontsDefault.H2>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#722ed1",
+          padding: "32px 12px",
+          borderRadius: "8px",
+        }}
+      >
+        <img src={logo} style={{ padding: "12px", width: "200px" }} />
+      </div>
 
       <FormSignUp className="form-content" />
     </StyleContentL>

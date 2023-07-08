@@ -9,14 +9,14 @@ export const StyledContentRestaurant = styled.div`
 
 export const StyledContentP = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 20px;
   flex-direction: column;
   gap: 10px;
 
   .search-content,
   .title-content,
   .table-content {
-    padding: 10px;
+    padding-block: 10px;
   }
 
   .search-content,

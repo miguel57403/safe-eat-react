@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 
 export const StyleMenu = styled.div`
   width: 15%;
-  max-width: 15%;
-  min-width: 15%;
+  min-width: 250px;
+  max-width: 300px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -42,8 +42,7 @@ export const StyleMenu = styled.div`
   }
 
   .footer-menu {
-    height: 80px;
-    background-color: #22075e;
+    background-color: #531dab;
     border-radius: 8px;
     gap: 10px;
     display: flex;
