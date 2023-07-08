@@ -38,8 +38,7 @@ export const Page = styled.div`
 `;
 
 export const Form = styled.div`
-  width: 30%;
-  min-width: 500px;
+  max-width: 800px;
   background-color: white;
   padding: 10px;
   border-radius: 8px;

@@ -3,6 +3,7 @@ import { SignUpPage } from "pages/Auth/SignUp";
 import { RestaurantSelectPage } from "pages/Auth/RestaurantSelect";
 import { RestaurantNewPage } from "pages/Auth/RestaurantForm";
 import { DeliveriesPage } from "pages/Deliveries";
+import { DeliveriesFormPage } from "pages/DeliveriesForm";
 import { HomePage } from "pages/Home";
 import { IngredientsPage } from "pages/Ingredients";
 import { IngredientsFormPage } from "pages/IngredientsForm";
@@ -30,6 +31,8 @@ export const RoutesApp: React.FC = () => {
       <Route path="/ingredients/new" element={<IngredientsFormPage />} />
       <Route path="/ingredients/:id" element={<IngredientsFormPage />} />
       <Route path="/deliveries" element={<DeliveriesPage />} />
+      <Route path="/deliveries/new" element={<DeliveriesFormPage />} />
+      <Route path="/deliveries/:id" element={<DeliveriesFormPage />} />
       <Route path="/sections" element={<SectionsPage />} />
       <Route path="/sections/new" element={<SectionsFormPage />} />
       <Route path="/sections/:id" element={<SectionsFormPage />} />

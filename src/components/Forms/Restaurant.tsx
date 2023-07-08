@@ -54,7 +54,11 @@ export const FormRestaurant = () => {
                     name={[name, "price"]}
                     rules={[{ required: true, message: "Price is required" }]}
                   >
-                    <InputNumber prefix="€" placeholder="Price" />
+                    <InputNumber
+                      prefix="€"
+                      placeholder="Price"
+                      style={{ width: "100%" }}
+                    />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -63,7 +67,11 @@ export const FormRestaurant = () => {
                       { required: true, message: "Minimum time is required" },
                     ]}
                   >
-                    <Input placeholder="Minimum time" />
+                    <InputNumber
+                      placeholder="Minimum time"
+                      addonAfter="min"
+                      style={{ width: "100%" }}
+                    />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -72,7 +80,11 @@ export const FormRestaurant = () => {
                       { required: true, message: "Maximum time is required" },
                     ]}
                   >
-                    <Input placeholder="Maximum time" />
+                    <InputNumber
+                      placeholder="Maximum time"
+                      addonAfter="min"
+                      style={{ width: "100%" }}
+                    />
                   </Form.Item>
 
                   <Form.Item>
