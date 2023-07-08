@@ -5,21 +5,20 @@ import {
 } from "@ant-design/icons";
 import { Button, Form, Input, InputNumber, Space, Upload } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { styled } from "styled-components";
 
-export const FormRestaurant = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+type FormRestaurantProps = {
+  isUpdating?: boolean;
+  isLoading?: boolean;
+  onSubmit: (values: FormRestaurantData) => void;
+};
 
-  const onFinish = (values: FormRestaurantData) => {
-    console.log("Success:", values);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate("/dashboard");
-    }, 500);
-  };
+export const FormRestaurant = ({
+  onSubmit,
+  isLoading = false,
+  isUpdating = false,
+}: FormRestaurantProps) => {
+  const navigate = useNavigate();
 
   return (
     <FormContainer>
@@ -27,7 +26,7 @@ export const FormRestaurant = () => {
         layout="vertical"
         className="form-login"
         initialValues={{ remember: false }}
-        onFinish={onFinish}
+        onFinish={onSubmit}
         autoComplete="off"
       >
         <Form.Item
@@ -154,7 +153,7 @@ type FormRestaurantData = {
 
 export const FormContainer = styled.div`
   width: 100%;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
   max-width: 800px;
