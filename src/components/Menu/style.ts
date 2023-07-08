@@ -42,7 +42,6 @@ export const StyleMenu = styled.div`
   }
 
   .footer-menu {
-    height: 80px;
     background-color: #531dab;
     border-radius: 8px;
     gap: 10px;
