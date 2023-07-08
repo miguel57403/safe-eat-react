@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { FormRestaurant } from "components/Forms/Restaurant";
+import { FormRestaurant } from "components/Forms/FormRestaurant";
 import { FontsDefault } from "assets/fonts/Fonts";
 
 export const RestaurantNewPage = () => {

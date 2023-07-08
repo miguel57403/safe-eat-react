@@ -1,5 +1,5 @@
 import { FontsDefault } from "assets/fonts/Fonts";
-import { FormLogin } from "components/Forms/Login";
+import { FormLogin } from "components/Forms/FormLogin";
 import logo from "assets/images/logo-restaurants.svg";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";

@@ -1,5 +1,5 @@
 import { StyleContentL } from "components/Contents/styled";
-import { FormSignUp } from "components/Forms/SignUp";
+import { FormSignUp } from "components/Forms/FormSignUp";
 import logo from "assets/images/logo-restaurants.svg";
 
 export const ContentSignUp = () => {

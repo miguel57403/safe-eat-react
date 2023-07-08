@@ -2,7 +2,7 @@ import { FontsDefault } from "assets/fonts/Fonts";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import logo from "assets/images/logo-restaurants.svg";
-import { FormSignUp } from "components/Forms/SignUp";
+import { FormSignUp } from "components/Forms/FormSignUp";
 
 export const SignUpPage = () => {
   return (
