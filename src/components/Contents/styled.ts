@@ -21,7 +21,6 @@ export const StyledContentP = styled.div`
 
   .search-content,
   .title-content,
-  .info-content,
   .table-content {
     border-radius: 8px;
   }
@@ -35,17 +34,6 @@ export const StyledContentP = styled.div`
   .search-content {
     gap: 10px;
     display: flex;
-  }
-  .info-content {
-    display: flex;
-    background-color: #efdbff;
-    justify-content: space-between;
-    padding: 10px;
-
-    .actions {
-      display: flex;
-      gap: 10px;
-    }
   }
   .table-content {
     * {
