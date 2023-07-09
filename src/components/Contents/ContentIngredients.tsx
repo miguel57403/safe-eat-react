@@ -125,9 +125,10 @@ const columns: ColumnsType<IDataType> = [
     className: "column-table",
   },
   {
-    title: "Restrictions Count",
+    title: "Restrictions",
     dataIndex: "restrictionsCount",
     className: "column-table",
     key: "restrictionsCount",
+    width: "200px",
   },
 ];

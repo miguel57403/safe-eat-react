@@ -116,9 +116,10 @@ const columns: ColumnsType<IDataType> = [
     key: "name",
   },
   {
-    title: "Products Count",
+    title: "Products",
     dataIndex: "productsCount",
     className: "column-table",
     key: "productsCount",
+    width: "200px",
   },
 ];

@@ -135,11 +135,13 @@ const columns: ColumnsType<IDataType> = [
     dataIndex: "price",
     className: "column-table",
     key: "price",
+    width: "200px",
   },
   {
-    title: "Ingredients Count",
+    title: "Ingredients",
     dataIndex: "ingredientsCount",
     className: "column-table",
     key: "ingredientsCount",
+    width: "200px",
   },
 ];

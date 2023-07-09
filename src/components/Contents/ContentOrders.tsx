@@ -150,6 +150,7 @@ const columns: ColumnsType<IDataType> = [
     dataIndex: "status",
     key: "status",
     className: "column-table",
+    width: "200px",
     render: (_, { status }) => (
       <Tag color={statusMap[status]} key={status}>
         {status.toUpperCase()}
@@ -160,12 +161,14 @@ const columns: ColumnsType<IDataType> = [
     title: "Quantity",
     dataIndex: "quantity",
     className: "column-table",
+    width: "200px",
     key: "quantity",
   },
   {
     title: "Total",
     dataIndex: "total",
     className: "column-table",
+    width: "200px",
     key: "total",
   },
 ];
