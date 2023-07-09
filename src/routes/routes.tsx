@@ -1,18 +1,18 @@
-import { LoginPage } from "pages/Auth/Login";
-import { SignUpPage } from "pages/Auth/SignUp";
-import { RestaurantSelectPage } from "pages/Auth/RestaurantSelect";
-import { RestaurantNewPage } from "pages/Auth/RestaurantForm";
-import { HomePage } from "pages/Home";
-import { IngredientsPage } from "pages/Ingredients";
-import { IngredientsFormPage } from "pages/IngredientsForm";
-import { OrdersPage } from "pages/Orders";
-import { ProductsPage } from "pages/Products";
-import { ProductsFormPage } from "pages/ProductsForm";
-import { SectionsPage } from "pages/Sections";
-import { SectionsFormPage } from "pages/SectionsForm";
-import { NotFoundPage } from "pages/NotFound";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ProfileFormPage } from "pages/ProfileForm";
+import { LoginPage } from "pages/Auth/LoginPage";
+import { SignUpPage } from "pages/Auth/SignUpPage";
+import { RestaurantSelectPage } from "pages/Auth/RestaurantSelectPage";
+import { RestaurantNewPage } from "pages/Auth/RestaurantFormPage";
+import { HomePage } from "pages/HomePage";
+import { IngredientsPage } from "pages/IngredientsPage";
+import { IngredientsFormPage } from "pages/IngredientsFormPage";
+import { OrdersPage } from "pages/OrdersPage";
+import { ProductsPage } from "pages/ProductsPage";
+import { ProductsFormPage } from "pages/ProductsFormPage";
+import { SectionsPage } from "pages/SectionsPage";
+import { SectionsFormPage } from "pages/SectionsFormPage";
+import { NotFoundPage } from "pages/NotFoundPage";
+import { ProfileFormPage } from "pages/ProfileFormPage";
 import { OrdersFormPage } from "pages/OrdersFormPage";
 
 export const RoutesApp: React.FC = () => {
