@@ -1,14 +1,22 @@
+import { AddressesEndpoint } from "./endpoints/addresses.endpoint";
+import { AdvertisementsEndpoint } from "services/api/endpoints/advertisements.endpoint";
 import { AuthEndpoint } from "./endpoints/auth.endpoint";
-import { BedSchedulesEndpoint } from "./endpoints/bed-schedules.endpoint";
-import { GroundsEndpoint } from "./endpoints/grounds.endpoint";
-import { PeoplesEndpoint } from "./endpoints/peoples.endpoint";
-import { SeedsEndpoint } from "./endpoints/seeds.endpoint";
-import { ToolsEndpoint } from "./endpoints/tools.endpoint";
-import { UsersEndpoint } from "./endpoints/users.endpoint";
-import { VoluntariesEndpoint } from "./endpoints/voluntaries.endpoint";
-import { VoluntariesRequestEndpoint } from "./endpoints/voluntaries-request.endpoint";
+import { CartsEndpoint } from "./endpoints/carts.endpoint";
+import { CategoriesEndpoint } from "./endpoints/categories.endpoint";
+import { DeliveriesEndpoint } from "./endpoints/deliveries.endpoint";
+import { FeedbacksEndpoint } from "./endpoints/feedbacks.endpoint";
 import { HttpClient } from "./types";
-import { GroundsDonateEndpoint } from "services/api/endpoints/grounds-donate.endpoint";
+import { IngredientsEndpoint } from "./endpoints/ingredients.endpoint";
+import { ItemsEndpoint } from "./endpoints/items.endpoint";
+import { NotificationsEndpoint } from "./endpoints/notifications.endpoint";
+import { OrdersEndpoint } from "./endpoints/orders.endpoint";
+import { PaymentsEndpoint } from "./endpoints/payments.endpoint";
+import { ProductsEndpoint } from "./endpoints/products.endpoint";
+import { ProductSectionsEndpoint } from "./endpoints/productSections.endpoint";
+import { RestaurantsEndpoint } from "./endpoints/restaurants.endpoint";
+import { RestaurantSectionSectionsEndpoint } from "./endpoints/restaurantSections.endpoint";
+import { RestrictionsEndpoint } from "./endpoints/restrictions.endpoint";
+import { UsersEndpoint } from "./endpoints/users.endpoint";
 
 class ApiJWT {
   constructor(public httpClient: HttpClient) {}
@@ -23,14 +31,22 @@ class ApiJWT {
 }
 
 export class Api extends ApiJWT {
+  addresses = new AddressesEndpoint(this.httpClient);
+  advertisements = new AdvertisementsEndpoint(this.httpClient);
   auth = new AuthEndpoint(this.httpClient);
-  bedSchedules = new BedSchedulesEndpoint(this.httpClient);
-  grounds = new GroundsEndpoint(this.httpClient);
-  groundsDonates = new GroundsDonateEndpoint(this.httpClient);
-  peoples = new PeoplesEndpoint(this.httpClient);
-  seeds = new SeedsEndpoint(this.httpClient);
-  tools = new ToolsEndpoint(this.httpClient);
+  carts = new CartsEndpoint(this.httpClient);
+  categories = new CategoriesEndpoint(this.httpClient);
+  deliveries = new DeliveriesEndpoint(this.httpClient);
+  feedbacks = new FeedbacksEndpoint(this.httpClient);
+  ingredients = new IngredientsEndpoint(this.httpClient);
+  items = new ItemsEndpoint(this.httpClient);
+  notifications = new NotificationsEndpoint(this.httpClient);
+  orders = new OrdersEndpoint(this.httpClient);
+  payments = new PaymentsEndpoint(this.httpClient);
+  products = new ProductsEndpoint(this.httpClient);
+  productSections = new ProductSectionsEndpoint(this.httpClient);
+  restaurants = new RestaurantsEndpoint(this.httpClient);
+  restaurantSections = new RestaurantSectionSectionsEndpoint(this.httpClient);
+  restrictions = new RestrictionsEndpoint(this.httpClient);
   users = new UsersEndpoint(this.httpClient);
-  voluntaries = new VoluntariesEndpoint(this.httpClient);
-  voluntatiesRequest = new VoluntariesRequestEndpoint(this.httpClient);
 }

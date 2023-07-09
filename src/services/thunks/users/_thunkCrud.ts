@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Uuid, api } from "../../api";
-import { UserStore, UserUpdateParams } from "../../api/interfaces/IUser";
+import { UserDto } from "services/api/dto/UserDto";
 
 export const fetchThunkUserRegister = createAsyncThunk(
   "users/register",
-  async (userInsert: UserStore, { rejectWithValue }) => {
+  async (userInsert: UserDto, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.store(userInsert);
+      const { data } = await api.auth.signup(userInsert);
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -20,9 +20,9 @@ export const fetchThunkUserRegister = createAsyncThunk(
 
 export const fetchThunkUserUpdate = createAsyncThunk(
   "users/update",
-  async ({ id, userUpdated }: UserUpdateParams, { rejectWithValue }) => {
+  async (userUpdated: UserDto, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.update(id, userUpdated);
+      const { data } = await api.users.update(userUpdated);
 
       return data;
     } catch (err: any) {

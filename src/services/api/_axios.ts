@@ -3,7 +3,7 @@ import { axiosLogInterceptor } from "./_axios-log-interceptor";
 import _config from "./_config";
 
 export const axios = _axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: _config.apiBaseURL,
   headers: { "Content-Type": "application/json" },
 });
 

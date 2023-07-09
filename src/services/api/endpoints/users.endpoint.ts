@@ -1,31 +1,32 @@
-import {
-  UserIndex,
-  UserResponse,
-  UserStore,
-  UserUpdate,
-} from "../interfaces/IUser";
-import { ApiResponse, HttpClient, Pagination, Uuid } from "../types";
+import { UserDto } from "../dto/UserDto";
+import { User } from "../models/User";
+import { ApiResponse, HttpClient, Uuid } from "../types";
 
 export class UsersEndpoint {
   constructor(private httpClient: HttpClient) {}
 
-  show(id: Uuid): ApiResponse<UserResponse> {
-    return this.httpClient.get(`/api/users/${id}`);
+  findAll(): ApiResponse<User[]> {
+    return this.httpClient.get("/users");
   }
 
-  index(query: UserIndex): ApiResponse<Pagination<UserResponse>> {
-    return this.httpClient.get("/api/users", { params: query });
+  findById(id: Uuid): ApiResponse<User> {
+    return this.httpClient.get(`/users/${id}`);
   }
 
-  store(body: UserStore): ApiResponse<UserResponse> {
-    return this.httpClient.post("/api/users", body);
+  me(): ApiResponse<User> {
+    return this.httpClient.get(`/users/me`);
   }
 
-  update(id: Uuid, body: UserUpdate): ApiResponse<UserResponse> {
-    return this.httpClient.put(`/api/users/${id}`, body);
+  update(body: UserDto): ApiResponse<User> {
+    return this.httpClient.put(`/users`, body);
+  }
+
+  uploadImage(body: UserDto): ApiResponse<User> {
+    // TODO: Creat FormData
+    return this.httpClient.put(`/users`, body);
   }
 
   delete(id: Uuid): ApiResponse<void> {
-    return this.httpClient.delete(`/api/users/${id}`);
+    return this.httpClient.delete(`/users/${id}`);
   }
 }

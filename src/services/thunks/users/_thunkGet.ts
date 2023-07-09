@@ -1,12 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Uuid, api } from "../../api";
-import { UserIndex, UserStore } from "../../api/interfaces/IUser";
 
 export const fetchThunkUserGetAll = createAsyncThunk(
   "users/getAll",
-  async (query: UserIndex, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.index(query);
+      const { data } = await api.users.findAll();
 
       return data;
     } catch (err: any) {
@@ -23,7 +22,7 @@ export const fetchThunkUsersById = createAsyncThunk(
   "users/byId",
   async (id: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.show(id);
+      const { data } = await api.users.findById(id);
 
       return data;
     } catch (err: any) {
