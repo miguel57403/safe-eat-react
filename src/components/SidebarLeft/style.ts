@@ -40,6 +40,7 @@ export const StyleMenu = styled.div`
     flex-grow: 1;
     background-color: #722ed1;
     color: white;
+    border: none !important;
   }
 
   .ant-menu-item:hover {

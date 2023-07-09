@@ -1,7 +1,10 @@
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Avatar, Card, Col } from "antd";
-import { FontsDefault } from "assets/fonts/Fonts";
-import { StyledNotification } from "components/SidebarRight/styled";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
+import {Avatar, Badge, Button, Card, Col} from "antd";
+import {FontsDefault} from "assets/fonts/Fonts";
+import {StyledNotification} from "components/SidebarRight/styled";
+import React from "react";
 
 interface INotification {
   time: string;
@@ -41,9 +44,9 @@ export const SidebarRight = () => {
         fontsWeight={400}
         fontsSize={18}
         color="white"
-        style={{ display: "flex", alignItems: "baseline", gap: "5px" }}
+        style={{display: "flex", alignItems: "baseline", gap: "5px"}}
       >
-        <NotificationsIcon style={{ fontSize: "16px" }} />
+        <NotificationsIcon style={{fontSize: "16px"}}/>
         Notifications
       </FontsDefault.H1>
       <div className="card-notification">
@@ -59,18 +62,23 @@ export const SidebarRight = () => {
                     gap: 10,
                   }}
                 >
-                  <Avatar size={40} src={notification.user.picture} />
+                  <Badge dot={true} color={"blue"}>
+                    <Avatar size={40} src={notification.user.picture}/>
+                  </Badge>
                   <FontsDefault.H6
                     fontsWeight={500}
                     color="black"
-                    style={{ flexGrow: 1 }}
+                    style={{flexGrow: 1}}
                   >
                     {notification.user.name}
                   </FontsDefault.H6>
                 </div>
               }
-              style={{ padding: 0, margin: 0 }}
+              style={{padding: 0, margin: 0}}
               bordered={false}
+              extra={
+                <Button icon={<DeleteOutlineIcon/>} type={"text"} danger/>
+              }
             >
               <FontsDefault.P1 color="gray" fontsWeight={300}>
                 {notification.time}

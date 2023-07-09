@@ -9,19 +9,19 @@ import React from "react";
 export const ContentHome: React.FC<IGlobalAttribute> = ({ ...props }) => {
   return (
     <StyledContentH {...props}>
-      <FontsDefault.H1
-        color={"black"}
-        className={"title-dashboard"}
+      <FontsDefault.H2
+        className={"title-content"}
         fontsSize={32}
       >
         Dashboard
-      </FontsDefault.H1>
+      </FontsDefault.H2>
       <CardDefault backgroundColor="#efdbff">
         {/* <ColumnGraph className="column-graph" /> */}
-        <CardStatistic title="Received" value={3} color="#f5222d" />
-        <CardStatistic title="Preparing" value={2} color="#d48806" />
-        <CardStatistic title="Transporting" value={10} color="#389e0d" />
-        <CardStatistic title="Delivering" value={4} color="#1677ff" />
+        <CardStatistic title="Registered" value={3} color="#d46b08" />
+        <CardStatistic title="Preparing" value={3} color="#d4b106" />
+        <CardStatistic title="Transporting" value={2} color="#0958d9" />
+        <CardStatistic title="Delivered" value={10} color="#389e0d" />
+        <CardStatistic title="Cancelled" value={4} color="#cf1322" />
       </CardDefault>
       <CardDefault className="card-default-home">
         <BarGraph className="column-graph" />
@@ -31,7 +31,7 @@ export const ContentHome: React.FC<IGlobalAttribute> = ({ ...props }) => {
           fontsWeight={400}
           color="black"
         >
-          Pedidos por hora
+          Orders / hour
         </FontsDefault.H2>
       </CardDefault>
     </StyledContentH>

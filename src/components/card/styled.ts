@@ -8,5 +8,5 @@ export const StyledCard = styled.div<IStyledProps>`
   border-radius: 8px;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(5, auto);
 `;

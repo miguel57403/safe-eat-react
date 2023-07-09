@@ -1,19 +1,15 @@
-import {
-  AntDesignOutlined,
-  LogoutOutlined,
-  ShopOutlined,
-} from "@ant-design/icons";
+import {AntDesignOutlined, LogoutOutlined, ShopOutlined,} from "@ant-design/icons";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import GridViewIcon from "@mui/icons-material/GridView";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import ScienceIcon from "@mui/icons-material/Science";
-import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
-import { Avatar, Menu, MenuProps, Dropdown } from "antd";
-import { FontsDefault } from "assets/fonts/Fonts";
-import { StyleMenu } from "components/SidebarLeft/style";
-import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
-import { useNavigate, useLocation } from "react-router-dom";
+import CampaignIcon from "@mui/icons-material/Campaign";
+import {Avatar, Dropdown, Menu, MenuProps} from "antd";
+import {FontsDefault} from "assets/fonts/Fonts";
+import {StyleMenu} from "components/SidebarLeft/style";
+import {IGlobalAttribute} from "interfaces/IGlobalAttribute";
+import {useLocation, useNavigate} from "react-router-dom";
 import logo from "assets/images/logo-restaurants.svg";
 import React from "react";
 
@@ -47,8 +43,8 @@ export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
         onClick={(e) => navigate(`${e.key}`)}
         className="section-menu"
         selectedKeys={[location.pathname]}
-        mode="vertical"
         items={sidebarItems}
+        mode="inline"
       />
       <div className="footer-menu">
         <Dropdown menu={{ items }} trigger={["click"]}>
@@ -73,26 +69,21 @@ export const sidebarItems: MenuProps["items"] = [
     key: "/dashboard",
     icon: <DashboardOutlinedIcon style={{ fontSize: 22 }} />,
   },
-  { type: "divider" },
-  { type: "divider" },
   {
     label: "Orders",
     key: "/orders",
     icon: <ReceiptIcon style={{ fontSize: 22 }} />,
   },
-  { type: "divider" },
   {
     label: "Products",
     key: "/products",
     icon: <InventoryIcon style={{ fontSize: 22 }} />,
   },
-  { type: "divider" },
   {
     label: "Ingredients",
     key: "/ingredients",
     icon: <ScienceIcon style={{ fontSize: 22 }} />,
   },
-  { type: "divider" },
   {
     label: "Sections",
     key: "/sections",
@@ -101,6 +92,6 @@ export const sidebarItems: MenuProps["items"] = [
   {
     label: "Advertisements",
     key: "/advertisements",
-    icon: <CampaignOutlinedIcon style={{ fontSize: 22 }} />,
+    icon: <CampaignIcon style={{ fontSize: 22 }} />,
   },
 ];
