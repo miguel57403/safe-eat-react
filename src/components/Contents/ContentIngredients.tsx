@@ -1,5 +1,5 @@
-import { DeleteOutlined, MoreOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Popover, Table } from "antd";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Table } from "antd";
 import Search from "antd/es/transfer/search";
 import type { ColumnsType } from "antd/es/table";
 import { FontsDefault } from "assets/fonts/Fonts";
@@ -65,22 +65,6 @@ export const ContentIngredients = () => {
       <div className="info-content">
         <div className="actions">
           <Button icon={<DeleteOutlined />} size="large" />
-          <Popover
-            content={
-              <div
-                style={{ gap: 10, display: "flex", flexDirection: "column" }}
-              >
-                <Button size="large">Section one</Button>
-                <Button size="large">Section two</Button>dasdasdsad
-                <Button size="large">Adicionar</Button>
-              </div>
-            }
-            title="Add to"
-            placement="bottom"
-            trigger="click"
-          >
-            <Button color="" icon={<MoreOutlined />} size="large" />
-          </Popover>
         </div>
 
         <FontsDefault.P1 color="dark" fontsSize={15}>
