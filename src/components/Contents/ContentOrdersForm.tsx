@@ -1,7 +1,6 @@
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledContentP } from "./styled";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import {
   Form,
   Input,
@@ -11,10 +10,41 @@ import {
   DatePicker,
   Divider,
   InputNumber,
+  Statistic,
+  Card,
+  Rate,
+  Descriptions,
 } from "antd";
 
 export const ContentOrdersForm = () => {
   const params = useParams();
+  const statuses = [
+    {
+      title: "Registered",
+      value: new Date(),
+      color: "#d46b08",
+    },
+    {
+      title: "Preparing",
+      value: new Date(),
+      color: "#d4b106",
+    },
+    {
+      title: "Transporting",
+      value: new Date(),
+      color: "#0958d9",
+    },
+    {
+      title: "Delivered",
+      value: new Date(),
+      color: "#389e0d",
+    },
+    {
+      title: "Cancelled",
+      value: new Date(),
+      color: "#cf1322",
+    },
+  ];
   const name = "Order one";
 
   return (
@@ -22,52 +52,95 @@ export const ContentOrdersForm = () => {
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
         Order: {params.id && name}
       </FontsDefault.H2>
-      <div
+      <GridContainer
         style={{
-          display: "flex",
-          width: "100%",
-          height: "calc(100vh - 20px - 100px)",
           flexGrow: 1,
           justifyContent: "center",
-          alignItems: "center",
-          padding: "16px",
+          gap: "10px",
         }}
       >
         <div
           style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "10px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
           }}
         >
+          <StatusesStatuses
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          />
+
+          {statuses
+            .filter((it) => it.value)
+            .map((it) => (
+              <Card
+                key={`statistic-${it.title}`}
+                bodyStyle={{ padding: "10px" }}
+              >
+                <Statistic
+                  title={it.title}
+                  value={formatDate(it.value!)}
+                  valueStyle={{ color: it.color }}
+                />
+              </Card>
+            ))}
+        </div>
+        <Card bodyStyle={{ padding: "16px" }}>
           <div
             style={{
               padding: "16px",
-              maxHeight: "75vh",
+              maxHeight: "calc(100vh - 20px - 100px - 40px)",
               overflowY: "auto",
-              minWidth: "800px",
             }}
           >
-            <OrdersForm
-              isUpdating={true}
-              onSubmit={(values) => {
-                console.log(values);
-              }}
-            />
+            <OrdersForm />
           </div>
+        </Card>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <Card bodyStyle={{ padding: "10px" }}>
+            <Descriptions bordered size="small" column={1}>
+              <Descriptions.Item label="Subtotal">€ 8,00</Descriptions.Item>
+              <Descriptions.Item label="Delivery">€ 0,99</Descriptions.Item>
+              <Descriptions.Item label="Total">€ 8,99</Descriptions.Item>
+            </Descriptions>
+          </Card>
+          <Card bodyStyle={{ padding: "10px" }}>
+            <Form
+              name="basic"
+              labelCol={{ span: 8 }}
+              initialValues={{ remember: true }}
+              layout="vertical"
+              autoComplete="off"
+              requiredMark={true}
+            >
+              <Form.Item label="Score" name="score">
+                <Rate disabled defaultValue={2} />
+              </Form.Item>
+              <Form.Item label="Comment" name="comment">
+                <TextArea disabled value="Hello world" />
+              </Form.Item>
+            </Form>
+          </Card>
         </div>
-      </div>
+      </GridContainer>
     </StyledContentP>
   );
 };
 
-type OrdersFormProps = {
-  isUpdating: boolean;
+type StatusesFormProps = {
   onSubmit: (values: OrdersFormValues) => void;
 };
 
-export const OrdersForm = ({ onSubmit, isUpdating }: OrdersFormProps) => {
-  const [statuses, setStatuses] = useState<Option[]>([
+const StatusesStatuses = ({ onSubmit }: StatusesFormProps) => {
+  const statuses: Option[] = [
     {
       key: "REGISTERED",
       name: "Registered",
@@ -88,40 +161,61 @@ export const OrdersForm = ({ onSubmit, isUpdating }: OrdersFormProps) => {
       key: "CANCELED",
       name: "Cancelled",
     },
-  ]);
+  ];
 
   const onFinish = (values: OrdersFormValues) => {
     onSubmit(values);
   };
 
   return (
+    <Card bodyStyle={{ padding: "10px" }}>
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        initialValues={{ remember: true }}
+        layout="vertical"
+        onFinish={onFinish}
+        autoComplete="off"
+        requiredMark={true}
+      >
+        <Form.Item
+          label="Status"
+          name="status"
+          rules={[{ required: true, message: "Status is required" }]}
+        >
+          <Select
+            style={{ width: "100%" }}
+            placeholder="select the products"
+            optionLabelProp="label"
+          >
+            {statuses.map((it) => (
+              <Select.Option value={it.key} label={it.name}>
+                <Space>{it.name}</Space>
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Update
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
+  );
+};
+
+export const OrdersForm = () => {
+  return (
     <Form
       name="basic"
       labelCol={{ span: 8 }}
       initialValues={{ remember: true }}
       layout="vertical"
-      onFinish={onFinish}
       autoComplete="off"
       requiredMark={true}
     >
-      <Form.Item
-        label="Status"
-        name="status"
-        rules={[{ required: true, message: "Status is required" }]}
-      >
-        <Select
-          style={{ width: "100%" }}
-          placeholder="select the products"
-          optionLabelProp="label"
-        >
-          {statuses.map((it) => (
-            <Select.Option value={it.key} label={it.name}>
-              <Space>{it.name}</Space>
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-
       <Form.Item
         label="Time"
         name="time"
@@ -325,12 +419,6 @@ export const OrdersForm = ({ onSubmit, isUpdating }: OrdersFormProps) => {
           </div>
         </Form.Item>
       ))}
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          {isUpdating ? "Update" : "Create"}
-        </Button>
-      </Form.Item>
     </Form>
   );
 };
@@ -344,3 +432,20 @@ type Option = {
   key: string;
   name: string;
 };
+
+import { styled } from "styled-components";
+import TextArea from "antd/es/input/TextArea";
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  gap: 10px;
+
+  @media (max-width: 1500px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+function formatDate(date: Date) {
+  return date.toISOString().slice(0, -5).replace("T", " ");
+}

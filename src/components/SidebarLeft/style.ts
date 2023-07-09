@@ -12,6 +12,7 @@ export const StyleMenu = styled.div`
   background-color: #722ed1;
   gap: 24px;
   border-radius: 8px;
+  height: 100%;
 
   .logo-menu {
     display: flex;

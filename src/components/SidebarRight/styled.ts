@@ -7,6 +7,7 @@ export const StyledNotification = styled.div`
   height: calc(100vh - 20px);
   overflow-y: auto;
   padding-right: 8px;
+  border-radius: 8px;
 
   .title-notification {
     padding: 10px 0;
