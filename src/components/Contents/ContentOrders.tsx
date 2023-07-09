@@ -73,7 +73,51 @@ export const ContentOrders = () => {
         </Button>
       </div>
 
-      <Table className="table-content" columns={columns} dataSource={data} />
+      <div className="info-content">
+        <div className="actions">
+          <Button icon={<DeleteOutlined />} size="large" />
+          <Popover
+            content={
+              <div
+                style={{ gap: 10, display: "flex", flexDirection: "column" }}
+              >
+                <Button size="large">Section one</Button>
+                <Button size="large">Section two</Button>
+                <Button size="large">Adicionar</Button>
+              </div>
+            }
+            title="Add to"
+            placement="bottom"
+            trigger="click"
+          >
+            <Button color="" icon={<MoreOutlined />} size="large" />
+          </Popover>
+        </div>
+
+        <FontsDefault.P1 color="dark" fontsSize={15}>
+          {data.length} orders
+        </FontsDefault.P1>
+      </div>
+
+      <Table
+        className="table-content"
+        columns={columns}
+        rowSelection={{
+          type: "checkbox",
+          onChange: (
+            selectedRowKeys: React.Key[],
+            selectedRows: IDataType[]
+          ) => {
+            console.log(
+              `selectedRowKeys: ${selectedRowKeys}`,
+              "selectedRows: ",
+              selectedRows
+            );
+          },
+          getCheckboxProps: (record: IDataType) => ({}),
+        }}
+        dataSource={data}
+      />
     </StyledContentP>
   );
 };
