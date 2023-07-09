@@ -1,6 +1,6 @@
 import { ContentIngredients } from "components/Contents/ContentIngredients";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const IngredientsPage = () => {
-  return <MenuContext children={<ContentIngredients />} />;
+  return <Layout children={<ContentIngredients />} />;
 };

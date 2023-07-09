@@ -1,6 +1,6 @@
 import { ContentHome } from "components/Contents/ContentHome";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const HomePage = () => {
-  return <MenuContext children={<ContentHome />} />;
+  return <Layout children={<ContentHome />} />;
 };

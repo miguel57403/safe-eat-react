@@ -1,6 +1,6 @@
 import { ContentNotFound } from "components/Contents/ContentNotFound";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const NotFoundPage = () => {
-  return <MenuContext children={<ContentNotFound />} />;
+  return <Layout children={<ContentNotFound />} />;
 };

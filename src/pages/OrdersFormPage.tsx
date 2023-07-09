@@ -1,6 +1,6 @@
 import { ContentOrdersForm } from "components/Contents/ContentOrdersForm";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const OrdersFormPage = () => {
-  return <MenuContext children={<ContentOrdersForm />} />;
+  return <Layout children={<ContentOrdersForm />} />;
 };

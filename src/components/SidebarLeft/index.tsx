@@ -11,13 +11,13 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import ScienceIcon from "@mui/icons-material/Science";
 import { Avatar, Menu, MenuProps, Dropdown } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
-import { StyleMenu } from "components/Menu/style";
+import { StyleMenu } from "components/SidebarLeft/style";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "assets/images/logo-restaurants.svg";
 import React from "react";
 
-export const MenuSafeEat: React.FC<IGlobalAttribute> = ({ ...props }) => {
+export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
   const navigate = useNavigate();
   const location = useLocation();
 

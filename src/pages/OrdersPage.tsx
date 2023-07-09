@@ -1,6 +1,6 @@
 import { ContentOrders } from "components/Contents/ContentOrders";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const OrdersPage = () => {
-  return <MenuContext children={<ContentOrders />} />;
+  return <Layout children={<ContentOrders />} />;
 };

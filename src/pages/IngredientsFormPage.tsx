@@ -1,6 +1,6 @@
 import { ContentIngredientsForm } from "components/Contents/ContentIngredientsForm";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const IngredientsFormPage = () => {
-  return <MenuContext children={<ContentIngredientsForm />} />;
+  return <Layout children={<ContentIngredientsForm />} />;
 };

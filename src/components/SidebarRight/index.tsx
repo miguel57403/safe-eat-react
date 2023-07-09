@@ -1,7 +1,7 @@
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Avatar, Card, Col } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
-import { StyledNotification } from "components/Notification/styled";
+import { StyledNotification } from "components/SidebarRight/styled";
 
 interface INotification {
   time: string;
@@ -123,7 +123,7 @@ const itemsNotification: INotification[] = [
   },
 ];
 
-export const Notifications = () => {
+export const SidebarRight = () => {
   return (
     <StyledNotification>
       <FontsDefault.H1

@@ -1,6 +1,6 @@
 import { ContentProfileForm } from "components/Contents/ContentProfileForm";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const ProfileFormPage = () => {
-  return <MenuContext children={<ContentProfileForm />} />;
+  return <Layout children={<ContentProfileForm />} />;
 };

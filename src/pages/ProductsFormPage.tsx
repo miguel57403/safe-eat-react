@@ -1,6 +1,6 @@
 import { ContentProductsForm } from "components/Contents/ContentProductsForm";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const ProductsFormPage = () => {
-  return <MenuContext children={<ContentProductsForm />} />;
+  return <Layout children={<ContentProductsForm />} />;
 };

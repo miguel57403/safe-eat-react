@@ -1,6 +1,6 @@
 import { ContentSections } from "components/Contents/ContentSections";
-import { MenuContext } from "components/ContextMenu";
+import { Layout } from "components/Layout";
 
 export const SectionsPage = () => {
-  return <MenuContext children={<ContentSections />} />;
+  return <Layout children={<ContentSections />} />;
 };
