@@ -16,16 +16,16 @@ import { useParams } from "react-router-dom";
 import { RcFile } from "antd/es/upload";
 import { PlusOutlined } from "@ant-design/icons";
 
-export const ContentProductsForm = () => {
+export const ContentAdvertisementsForm = () => {
   const params = useParams();
   const isUpdating = !!params.id;
   // TODO: Use the id to get the name
-  const name = "Product one";
+  const name = "Advertisement one";
 
   return (
     <StyledContentP>
       <FontsDefault.H2 className="title-content" fontsSize={32} color="black">
-        {isUpdating ? "Products: " + name : "Products: new"}
+        {isUpdating ? "Advertisements: " + name : "Advertisements: new"}
       </FontsDefault.H2>
       <div
         style={{
@@ -37,7 +37,7 @@ export const ContentProductsForm = () => {
           alignItems: "center",
         }}
       >
-        <ProductsForm
+        <AdvertisementsForm
           isUpdating={isUpdating}
           onSubmit={(values) => {
             console.log(values);
@@ -48,12 +48,12 @@ export const ContentProductsForm = () => {
   );
 };
 
-type ProductsFormProps = {
+type AdvertisementsFormProps = {
   isUpdating: boolean;
-  onSubmit: (values: ProductsFormValues) => void;
+  onSubmit: (values: AdvertisementsFormValues) => void;
 };
 
-function ProductsForm({ isUpdating, onSubmit }: ProductsFormProps) {
+function AdvertisementsForm({ isUpdating, onSubmit }: AdvertisementsFormProps) {
   const [categories, setCategories] = useState<Option[]>([]);
   const [ingredients, setIngredients] = useState<Option[]>([]);
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -92,7 +92,7 @@ function ProductsForm({ isUpdating, onSubmit }: ProductsFormProps) {
 
   const handleCancel = () => setPreviewOpen(false);
 
-  const onFinish = (values: ProductsFormValues) => {
+  const onFinish = (values: AdvertisementsFormValues) => {
     onSubmit(values);
   };
 
@@ -131,55 +131,6 @@ function ProductsForm({ isUpdating, onSubmit }: ProductsFormProps) {
         rules={[{ required: true, message: "Name is required" }]}
       >
         <Input />
-      </Form.Item>
-      <Form.Item
-        label="Price"
-        name="price"
-        rules={[{ required: true, message: "Price is required" }]}
-      >
-        <InputNumber
-          style={{ width: "100%" }}
-          prefix="€"
-          decimalSeparator="."
-          step={0.01}
-        />
-      </Form.Item>
-
-      <Form.Item
-        label="Category"
-        name="categoryId"
-        rules={[{ required: true, message: "Category is required" }]}
-      >
-        <Select
-          style={{ width: "100%" }}
-          placeholder="select the ingredients"
-          optionLabelProp="label"
-        >
-          {categories.map((it) => (
-            <Select.Option value={it.id} label={it.name}>
-              <Space>{it.name}</Space>
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Ingredients"
-        name="ingredientIds"
-        rules={[{ required: true, message: "Products is required" }]}
-      >
-        <Select
-          mode="multiple"
-          style={{ width: "100%" }}
-          placeholder="select the ingredients"
-          optionLabelProp="label"
-        >
-          {ingredients.map((it) => (
-            <Select.Option value={it.id} label={it.name}>
-              <Space>{it.name}</Space>
-            </Select.Option>
-          ))}
-        </Select>
       </Form.Item>
 
       <Form.Item
@@ -225,12 +176,9 @@ type Option = {
   name: string;
 };
 
-type ProductsFormValues = {
+type AdvertisementsFormValues = {
   name: string;
   image: string;
-  price: number;
-  categoryId: string;
-  ingredientIds: string[];
 };
 
 const getBase64 = (file: RcFile): Promise<string> =>

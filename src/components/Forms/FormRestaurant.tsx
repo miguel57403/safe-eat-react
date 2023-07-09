@@ -37,7 +37,11 @@ export const FormRestaurant = ({
           <Input />
         </Form.Item>
 
-        <Form.Item label="Logo" name="logo">
+        <Form.Item
+          label="Logo"
+          name="logo"
+          rules={[{ required: true, message: "Logo is required" }]}
+        >
           <Upload listType="picture" maxCount={1}>
             <Button style={{ width: "100%" }} icon={<UploadOutlined />}>
               Upload
@@ -45,7 +49,11 @@ export const FormRestaurant = ({
           </Upload>
         </Form.Item>
 
-        <Form.Item label="Cover" name="cover">
+        <Form.Item
+          label="Cover"
+          name="cover"
+          rules={[{ required: true, message: "Cover is required" }]}
+        >
           <Upload listType="picture" maxCount={1}>
             <Button style={{ width: "100%" }} icon={<UploadOutlined />}>
               Upload
