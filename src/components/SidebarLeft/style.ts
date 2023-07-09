@@ -41,6 +41,10 @@ export const StyleMenu = styled.div`
     color: white;
   }
 
+  .ant-menu-item:hover {
+    color: lightgray !important;
+  }
+
   .footer-menu {
     background-color: #531dab;
     border-radius: 8px;

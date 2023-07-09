@@ -2,13 +2,13 @@ import {
   AntDesignOutlined,
   LogoutOutlined,
   ShopOutlined,
-  MailOutlined,
 } from "@ant-design/icons";
-import DeliveryIcon from "@mui/icons-material/DeliveryDining";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import GridViewIcon from "@mui/icons-material/GridView";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import ScienceIcon from "@mui/icons-material/Science";
+import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import { Avatar, Menu, MenuProps, Dropdown } from "antd";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyleMenu } from "components/SidebarLeft/style";
@@ -68,13 +68,39 @@ export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
 };
 
 export const sidebarItems: MenuProps["items"] = [
-  { label: "Dashboard", key: "/dashboard", icon: <MailOutlined /> },
+  {
+    label: "Dashboard",
+    key: "/dashboard",
+    icon: <DashboardOutlinedIcon style={{ fontSize: 22 }} />,
+  },
   { type: "divider" },
-  { label: "Orders", key: "/orders", icon: <ReceiptIcon /> },
   { type: "divider" },
-  { label: "Products", key: "/products", icon: <InventoryIcon /> },
+  {
+    label: "Orders",
+    key: "/orders",
+    icon: <ReceiptIcon style={{ fontSize: 22 }} />,
+  },
   { type: "divider" },
-  { label: "Ingredients", key: "/ingredients", icon: <ScienceIcon /> },
+  {
+    label: "Products",
+    key: "/products",
+    icon: <InventoryIcon style={{ fontSize: 22 }} />,
+  },
   { type: "divider" },
-  { label: "Sections", key: "/sections", icon: <GridViewIcon /> },
+  {
+    label: "Ingredients",
+    key: "/ingredients",
+    icon: <ScienceIcon style={{ fontSize: 22 }} />,
+  },
+  { type: "divider" },
+  {
+    label: "Sections",
+    key: "/sections",
+    icon: <GridViewIcon style={{ fontSize: 22 }} />,
+  },
+  {
+    label: "Advertisements",
+    key: "/advertisements",
+    icon: <CampaignOutlinedIcon style={{ fontSize: 22 }} />,
+  },
 ];
