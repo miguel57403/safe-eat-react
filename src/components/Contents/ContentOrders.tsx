@@ -1,25 +1,59 @@
 import { DeleteOutlined, MoreOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Popover, Table } from "antd";
+import { Tag, Button, Popover, Table } from "antd";
+import type { ColumnsType } from "antd/es/table";
 import Search from "antd/es/transfer/search";
-import {
-  ColumnsMockedProducts,
-  DataMockedProducts,
-  rowSelection,
-} from "assets/data/dataMocketTable";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledContentP } from "components/Contents/styled";
 import { useNavigate } from "react-router-dom";
-
-const optionsMore = (
-  <div style={{ gap: 10, display: "flex", flexDirection: "column" }}>
-    <Button size="large">Section one</Button>
-    <Button size="large">Section two</Button>
-    <Button size="large">Adicionar</Button>
-  </div>
-);
+import { useState, useEffect } from "react";
 
 export const ContentOrders = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState<IDataType[]>([]);
+
+  useEffect(() => {
+    async function loadData() {
+      setData([
+        {
+          key: "1",
+          client: "Daniel",
+          status: "REGISTERED",
+          total: "8,00",
+          quantity: "1",
+        },
+        {
+          key: "1",
+          client: "Gustavo",
+          status: "PREPARING",
+          total: "8,00",
+          quantity: "1",
+        },
+        {
+          key: "1",
+          client: "Miguel",
+          status: "TRANSPORTING",
+          total: "8,00",
+          quantity: "1",
+        },
+        {
+          key: "1",
+          client: "Luiz",
+          status: "DELIVERED",
+          total: "8,00",
+          quantity: "1",
+        },
+        {
+          key: "1",
+          client: "Alan",
+          status: "CANCELED",
+          total: "8,00",
+          quantity: "1",
+        },
+      ]);
+    }
+
+    loadData();
+  }, []);
 
   return (
     <StyledContentP>
@@ -43,7 +77,15 @@ export const ContentOrders = () => {
         <div className="actions">
           <Button icon={<DeleteOutlined />} size="large" />
           <Popover
-            content={optionsMore}
+            content={
+              <div
+                style={{ gap: 10, display: "flex", flexDirection: "column" }}
+              >
+                <Button size="large">Section one</Button>
+                <Button size="large">Section two</Button>
+                <Button size="large">Adicionar</Button>
+              </div>
+            }
             title="Add to"
             placement="bottom"
             trigger="click"
@@ -53,19 +95,77 @@ export const ContentOrders = () => {
         </div>
 
         <FontsDefault.P1 color="dark" fontsSize={15}>
-          {DataMockedProducts.length} orders
+          {data.length} orders
         </FontsDefault.P1>
       </div>
 
       <Table
         className="table-content"
-        columns={ColumnsMockedProducts}
+        columns={columns}
         rowSelection={{
           type: "checkbox",
-          ...rowSelection,
+          onChange: (
+            selectedRowKeys: React.Key[],
+            selectedRows: IDataType[]
+          ) => {
+            console.log(
+              `selectedRowKeys: ${selectedRowKeys}`,
+              "selectedRows: ",
+              selectedRows
+            );
+          },
+          getCheckboxProps: (record: IDataType) => ({}),
         }}
-        dataSource={DataMockedProducts}
+        dataSource={data}
       />
     </StyledContentP>
   );
 };
+
+interface IDataType {
+  key: string;
+  client: string;
+  status: string;
+  quantity: string;
+  total: string;
+}
+
+const statusMap: Record<string, string> = {
+  REGISTERED: "volcano",
+  PREPARING: "yellow",
+  TRANSPORTING: "geekblue",
+  DELIVERED: "green",
+  CANCELED: "red",
+};
+
+const columns: ColumnsType<IDataType> = [
+  {
+    title: "Client",
+    dataIndex: "client",
+    key: "client",
+    className: "column-table",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+    className: "column-table",
+    render: (_, { status }) => (
+      <Tag color={statusMap[status]} key={status}>
+        {status.toUpperCase()}
+      </Tag>
+    ),
+  },
+  {
+    title: "Quantity",
+    dataIndex: "quantity",
+    className: "column-table",
+    key: "quantity",
+  },
+  {
+    title: "Total",
+    dataIndex: "total",
+    className: "column-table",
+    key: "total",
+  },
+];
