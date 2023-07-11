@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginDto } from "services/api/dto/LoginDto";
-import { api } from "../../api";
+import { Uuid, api } from "../../api";
+import { Product } from "services/api/models/Product";
+import { IProductRequest } from "services/thunks/product/IProductsThunk";
 
-export const fetchThunkLogin = createAsyncThunk(
-  "auth/login",
-  async ({ password, email }: LoginDto, { rejectWithValue }) => {
+export const fetchThunkProductsRegister = createAsyncThunk(
+  "products/register",
+  async ({id, product}: IProductRequest, { rejectWithValue }) => {
     try {
-      const { data } = await api.auth.login({ password, email });
+      const { data } = await api.products.create(id, product);
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -18,11 +19,12 @@ export const fetchThunkLogin = createAsyncThunk(
   }
 );
 
-export const fetchThunkMe = createAsyncThunk(
-  "auth/me",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkProductsUpdate = createAsyncThunk(
+  "products/update",
+  async ({id, product}: IProductRequest, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.products.update(id, product);
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -34,11 +36,12 @@ export const fetchThunkMe = createAsyncThunk(
   }
 );
 
-export const fetchThunkRefresh = createAsyncThunk(
-  "auth/",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkProductsDelete = createAsyncThunk(
+  "products/delete",
+  async (idByProducts: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.products.delete(idByProducts);
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {

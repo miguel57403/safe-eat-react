@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginDto } from "services/api/dto/LoginDto";
-import { api } from "../../api";
+import { IOrdersRequest } from "services/thunks/orders/IOrders";
+import { Uuid, api } from "../../api";
 
-export const fetchThunkLogin = createAsyncThunk(
-  "auth/login",
-  async ({ password, email }: LoginDto, { rejectWithValue }) => {
+export const fetchThunkOrdersRegister = createAsyncThunk(
+  "orders/register",
+  async ({Orders}: IOrdersRequest, { rejectWithValue }) => {
     try {
-      const { data } = await api.auth.login({ password, email });
+      const { data } = await api.orders.create(Orders);
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -18,12 +18,16 @@ export const fetchThunkLogin = createAsyncThunk(
   }
 );
 
-export const fetchThunkMe = createAsyncThunk(
-  "auth/me",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkOrdersUpdate = createAsyncThunk(
+  "orders/update",
+  async ({id, Orders}: IOrdersRequest, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
-      return data;
+      if(id){
+
+        const { data } = await api.orders.update(id , Orders);
+        
+        return data;
+      }
     } catch (err: any) {
       if (err.response && err.response.data.message) {
         return rejectWithValue(err.response.data.message);
@@ -34,11 +38,12 @@ export const fetchThunkMe = createAsyncThunk(
   }
 );
 
-export const fetchThunkRefresh = createAsyncThunk(
-  "auth/",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkOrdersDelete = createAsyncThunk(
+  "orders/delete",
+  async (idByOrders: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.orders.delete(idByOrders);
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {

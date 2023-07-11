@@ -12,6 +12,7 @@ import {IGlobalAttribute} from "interfaces/IGlobalAttribute";
 import {useLocation, useNavigate} from "react-router-dom";
 import logo from "assets/images/logo-restaurants.svg";
 import React from "react";
+import { useAppSelector } from "app/store";
 
 export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
     },
   ];
 
+  const restaurantMain = useAppSelector(
+    (state) => state.restaurants.mainRestaurant
+  );
+
   return (
     <StyleMenu {...props}>
       <img src={logo} style={{ padding: "12px 34px" }} />
@@ -51,12 +56,12 @@ export const SidebarLeft: React.FC<IGlobalAttribute> = ({ ...props }) => {
           <Avatar
             style={{ cursor: "pointer" }}
             size={40}
-            icon={<AntDesignOutlined />}
+            src={restaurantMain?.logo}
             shape="square"
           />
         </Dropdown>
         <FontsDefault.P1 color="white" fontsSize={16}>
-          Galinha da vizinha
+          {restaurantMain?.name}
         </FontsDefault.P1>
       </div>
     </StyleMenu>

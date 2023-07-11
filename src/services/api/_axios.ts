@@ -4,7 +4,10 @@ import _config from "./_config";
 
 export const axios = _axios.create({
   baseURL: _config.apiBaseURL,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 if (_config.debugApi) {

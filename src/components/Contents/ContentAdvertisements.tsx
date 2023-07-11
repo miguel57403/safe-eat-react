@@ -1,15 +1,17 @@
-import {DeleteOutlined, PlusOutlined} from "@ant-design/icons";
-import {Button, Card} from "antd";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Card } from "antd";
 import Search from "antd/es/transfer/search";
-import {FontsDefault} from "assets/fonts/Fonts";
-import {StyledContentP} from "components/Contents/styled";
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {styled} from "styled-components";
+import { useAppSelector } from "app/store";
+import { FontsDefault } from "assets/fonts/Fonts";
+import { StyledContentP } from "components/Contents/styled";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
 
 export const ContentAdvertisements = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<IDataType[]>([]);
+  const advertisement = useAppSelector((state) => state.advertisements);
 
   useEffect(() => {
     async function loadData() {
@@ -77,7 +79,7 @@ export const ContentAdvertisements = () => {
             <FontsDefault.H6
               fontsWeight={500}
               color="black"
-              style={{flexGrow: 1}}
+              style={{ flexGrow: 1 }}
             >
               {item.name}
             </FontsDefault.H6>

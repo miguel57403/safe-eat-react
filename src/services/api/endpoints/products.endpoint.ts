@@ -13,7 +13,7 @@ export class ProductsEndpoint {
     return this.httpClient.get(`/products/${id}`);
   }
 
-  findByRestaurant(restaurantId: Uuid): ApiResponse<Product> {
+  findByRestaurant(restaurantId: Uuid): ApiResponse<Product[]> {
     return this.httpClient.get(`/products/restaurant/${restaurantId}`);
   }
 

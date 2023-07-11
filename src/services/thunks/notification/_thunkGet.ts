@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Uuid, api } from "../../api";
 
-export const fetchThunkUserGetAll = createAsyncThunk(
-  "users/getAll",
+export const fetchThunkNotificationGetAll = createAsyncThunk(
+  "notification/getAll",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.findAll();
+      const { data } = await api.notifications.findAll();
 
       return data;
     } catch (err: any) {
@@ -18,11 +18,11 @@ export const fetchThunkUserGetAll = createAsyncThunk(
   }
 );
 
-export const fetchThunkUsersById = createAsyncThunk(
-  "users/byId",
+export const fetchThunkNotificationById = createAsyncThunk(
+  "notification/byId",
   async (id: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.findById(id);
+      const { data } = await api.notifications.findById(id);
 
       return data;
     } catch (err: any) {
@@ -35,12 +35,27 @@ export const fetchThunkUsersById = createAsyncThunk(
   }
 );
 
-
-export const fetchThunkUsersByMe = createAsyncThunk(
-  "users/me",
+export const fetchThunkNotificationByRestaurant = createAsyncThunk(
+  "notification/byRestaurant",
   async (id: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.notifications.findByRestaurant(id);
+
+      return data;
+    } catch (err: any) {
+      if (err.response && err.response.data.message) {
+        return rejectWithValue(err.response.data.message);
+      } else {
+        return rejectWithValue(err.message);
+      }
+    }
+  }
+);
+export const fetchThunkNotificationByUser = createAsyncThunk(
+  "notification/byUser",
+  async (id: Uuid, { rejectWithValue }) => {
+    try {
+      const { data } = await api.notifications.findByUser(id);
 
       return data;
     } catch (err: any) {

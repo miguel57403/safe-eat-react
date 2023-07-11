@@ -1,13 +1,30 @@
 import { AntDesignOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Empty, Typography } from "antd";
+import { setRestaurantMain } from "app/redux/restaurants";
+import { useAppDispatch, useAppSelector } from "app/store";
 import { FontsDefault } from "assets/fonts/Fonts";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchThunkRestaurantsByUser } from "services/thunks/restaurants/_thunkGet";
 import { styled } from "styled-components";
-import { useState, useEffect } from "react";
 
 export const ContentRestaurantSelect = () => {
   const navigate = useNavigate();
   const [restaurants, setRestaurants] = useState<RestaurantSelection[]>([]);
+  const userAuth = useAppSelector((state) => state.auth.userAuth);
+  const restaurantsByUser =
+    useAppSelector((state) => state.restaurants.restaurants) || [];
+  const restaurantsMain =
+    useAppSelector((state) => state.restaurants.mainRestaurant) || [];
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log(restaurantsMain);
+  }, [restaurantsMain]);
+
+  useEffect(() => {
+    if (userAuth) dispatch(fetchThunkRestaurantsByUser(userAuth.id));
+  }, [userAuth]);
 
   useEffect(() => {
     async function loadRestaurants() {
@@ -38,12 +55,13 @@ export const ContentRestaurantSelect = () => {
         Select a Restaurant
       </FontsDefault.H2>
       <div className="items">
-        {restaurants.length === 0 ? (
+        {restaurantsByUser && restaurantsByUser?.length === 0 ? (
           <div className="empty">
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
           </div>
         ) : (
-          restaurants.map((item) => (
+          restaurantsByUser &&
+          restaurantsByUser.map((item) => (
             <Card
               key={`restaurant-${item.id}`}
               hoverable
@@ -65,6 +83,7 @@ export const ContentRestaurantSelect = () => {
               headStyle={{ background: `url(${item.cover}) no-repeat` }}
               style={{ width: 300 }}
               onClick={() => {
+                dispatch(setRestaurantMain(item));
                 navigate("/dashboard");
               }}
               children={

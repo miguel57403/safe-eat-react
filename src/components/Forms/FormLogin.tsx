@@ -1,14 +1,23 @@
 import { Button, Form, Input } from "antd";
+import { useAppDispatch } from "app/store";
 import { IGlobalAttribute } from "interfaces/IGlobalAttribute";
-import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchThunkLogin,
+  fetchThunkMe,
+} from "services/thunks/auth/_thunkCreate";
 
 export const FormLogin: React.FC<IGlobalAttribute> = ({ ...props }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const onFinish = (values: FormLoginValues) => {
-    console.log(values);
-    navigate("/restaurant/select");
+  const onFinish = async ({ password, username }: FormLoginValues) => {
+    try {
+      await dispatch(fetchThunkLogin({ email: username, password }));
+      await dispatch(fetchThunkMe(""))
+      navigate("/restaurant/select");
+    } catch (erro) {}
   };
 
   return (

@@ -17,7 +17,7 @@ export class OrdersEndpoint {
     return this.httpClient.get(`/orders/${id}`);
   }
 
-  findByRestaurant(restaurantId: Uuid): ApiResponse<Order> {
+  findByRestaurant(restaurantId: Uuid): ApiResponse<Order[]> {
     return this.httpClient.get(`/orders/restaurant/${restaurantId}`);
   }
 

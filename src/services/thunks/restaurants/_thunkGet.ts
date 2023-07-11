@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginDto } from "services/api/dto/LoginDto";
-import { api } from "../../api";
+import { Uuid, api } from "../../api";
 
-export const fetchThunkLogin = createAsyncThunk(
-  "auth/login",
-  async ({ password, email }: LoginDto, { rejectWithValue }) => {
+export const fetchThunkRestaurantsGetAll = createAsyncThunk(
+  "restaurants/getAll",
+  async (_, { rejectWithValue }) => {
     try {
-      const { data } = await api.auth.login({ password, email });
+      const { data } = await api.restaurants.findAll();
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -18,11 +18,12 @@ export const fetchThunkLogin = createAsyncThunk(
   }
 );
 
-export const fetchThunkMe = createAsyncThunk(
-  "auth/me",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkRestaurantsByUser = createAsyncThunk(
+  "restaurants/byUser",
+  async (id: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.restaurants.findAllByOwner(id);
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {
@@ -34,11 +35,12 @@ export const fetchThunkMe = createAsyncThunk(
   }
 );
 
-export const fetchThunkRefresh = createAsyncThunk(
-  "auth/",
-  async ({}: any, { rejectWithValue }) => {
+export const fetchThunkRestaurantsByRestaurant = createAsyncThunk(
+  "Restaurants/byRestaurant",
+  async (id: Uuid, { rejectWithValue }) => {
     try {
-      const { data } = await api.users.me();
+      const { data } = await api.restaurants.findById(id);
+
       return data;
     } catch (err: any) {
       if (err.response && err.response.data.message) {

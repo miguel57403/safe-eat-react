@@ -1,15 +1,29 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Tag, Button, Table } from "antd";
+import { Button, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import Search from "antd/es/transfer/search";
+import { useAppDispatch, useAppSelector } from "app/store";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledContentP } from "components/Contents/styled";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Order } from "services/api/models/Order";
+import { fetchThunkOrdersByRestaurants } from "services/thunks/orders/_thunkGet";
 
 export const ContentOrders = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<IDataType[]>([]);
+  const ordersByRestaurant = useAppSelector((state) => state.orders.orders);
+  const restaurantMain = useAppSelector(
+    (state) => state.restaurants.mainRestaurant
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (restaurantMain) {
+      dispatch(fetchThunkOrdersByRestaurants(restaurantMain?.id));
+    }
+  }, []);
 
   useEffect(() => {
     async function loadData() {
@@ -54,6 +68,21 @@ export const ContentOrders = () => {
 
     loadData();
   }, []);
+
+  const formatHandlee = (order: Order) => {
+    const name = order.client?.name?.toString();
+    const status = order.status?.toString();
+    const quantity = order.quantity?.toString();
+    const total = `€ ${order.total?.toFixed(2)}`;
+
+    return {
+      key: `key-${order.id.toString()}`,
+      client: name?.toString(),
+      status,
+      quantity,
+      total,
+    };
+  };
 
   return (
     <StyledContentP>
@@ -100,18 +129,18 @@ export const ContentOrders = () => {
           },
           getCheckboxProps: (record: IDataType) => ({}),
         }}
-        dataSource={data}
+        dataSource={ordersByRestaurant?.map((order) => formatHandlee(order))}
       />
     </StyledContentP>
   );
 };
 
 interface IDataType {
-  key: string;
-  client: string;
-  status: string;
-  quantity: string;
-  total: string;
+  key: any;
+  client: any;
+  status: any;
+  quantity: any;
+  total: any;
 }
 
 const statusMap: Record<string, string> = {
