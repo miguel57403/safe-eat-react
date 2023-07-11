@@ -1,17 +1,29 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Card } from "antd";
 import Search from "antd/es/transfer/search";
-import { useAppSelector } from "app/store";
+import { useAppDispatch, useAppSelector } from "app/store";
 import { FontsDefault } from "assets/fonts/Fonts";
 import { StyledContentP } from "components/Contents/styled";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchThunkAdvertisementByRestaurant } from "services/thunks/advertisement/_thunkGet";
 import { styled } from "styled-components";
 
 export const ContentAdvertisements = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<IDataType[]>([]);
-  const advertisement = useAppSelector((state) => state.advertisements);
+  const advertisement =
+    useAppSelector((state) => state.advertisements.advertisement) || [];
+  const dispatch = useAppDispatch();
+  const restaurants = useAppSelector(
+    (state) => state.restaurants.mainRestaurant
+  );
+
+  useEffect(() => {
+    if (restaurants) {
+      dispatch(fetchThunkAdvertisementByRestaurant(restaurants.id));
+    }
+  }, [restaurants]);
 
   useEffect(() => {
     async function loadData() {
@@ -70,21 +82,22 @@ export const ContentAdvertisements = () => {
         </div>
 
         <FontsDefault.P1 color="dark" fontsSize={15}>
-          {data.length} advertisements
+          {advertisement.length} advertisements
         </FontsDefault.P1>
       </div>
       <GridContainer>
-        {data.map((item) => (
-          <Card hoverable cover={<img alt="example" src={item.image} />}>
-            <FontsDefault.H6
-              fontsWeight={500}
-              color="black"
-              style={{ flexGrow: 1 }}
-            >
-              {item.name}
-            </FontsDefault.H6>
-          </Card>
-        ))}
+        {advertisement &&
+          advertisement.map((item:any) => (
+            <Card hoverable cover={<img alt="example" src={item.image} />}>
+              <FontsDefault.H6
+                fontsWeight={500}
+                color="black"
+                style={{ flexGrow: 1 }}
+              >
+                {item?.name}
+              </FontsDefault.H6>
+            </Card>
+          ))}
       </GridContainer>
     </StyledContentP>
   );

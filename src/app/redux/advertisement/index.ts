@@ -24,7 +24,7 @@ export const advertisementSlice = createSlice({
     builder.addCase(
       fetchThunkAdvertisementRegister.fulfilled,
       (state: IAdvertisementsReducer, { payload }) => {
-        state.advertisement = payload;
+        state.advertisement?.push(payload);
         state.loading = false;
         state.message = "Request finished";
         state.error = undefined;
@@ -49,7 +49,7 @@ export const advertisementSlice = createSlice({
     builder.addCase(
       fetchThunkAdvertisementUpdate.fulfilled,
       (state: IAdvertisementsReducer, { payload }) => {
-        state.advertisement = payload;
+        state.advertisement?.push(payload);
 
         state.loading = false;
         state.message = "Request finished";

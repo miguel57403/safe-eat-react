@@ -42,7 +42,7 @@ export interface ICartReducer extends IGlobalReducer {
 }
 
 export interface IAdvertisementsReducer extends IGlobalReducer {
-  advertisement: Advertisement | undefined;
+  advertisement: Advertisement[] | undefined;
 }
 
 export interface IProductsReducer extends IGlobalReducer {
